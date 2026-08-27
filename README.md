@@ -1,42 +1,28 @@
-# sv
+![ToneTools Icon](static/pwa-icon-192x192.png)
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+# Tone Tools
 
-## Creating a project
+A comprehensive, interactive web application designed for daily music theory practice and a one stop place for many useful tools.
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Features
+* **Chord Progression Tool:** Create chord progressions then play them back in one of many pre-programmed music styles.
+* **Interval Ear Training:** Custom made or preset interval ear training exercises and a system to track your stats.
+* **Interactive Sight Reading:** Generates dynamic sheet music with customizable clefs, note ranges, and accidental toggles.
+* **Web MIDI Integration:** Connect physical hardware keyboards to interact with exercises in real-time, featuring custom debouncing for chord detection.
+* **Chord & Scale Libraries:** Look up useful information regarding chords and scales.
 
-```sh
-# create a new project
-npx sv create my-app
-```
+## Tech Stack
+* **Framework:** SvelteKit 5 / Svelte Runes
+* **Language:** TypeScript
+* **Styling:** Custom SCSS with a responsive, CSS-variable-driven design system.
 
-To recreate this project with the same configuration:
+## Technical Highlights
+* **Unified Audio & MIDI Services:** Uses reactive Svelte 5 classes (`$state`) to seamlessly bridge browser Web Audio/MIDI APIs directly into UI components with unified setup/teardown lifecycles.
+* **Chord Progression Lookahead Scheduler:** Fully custom made just-in-time (JIT) scheduler for notes in my chord progression tool. Based off a common paradigm used in digital audio workstations (DAW) for most efficient browser based note player.
+* **Sheet Music Rendering:** Powered by [`vector-score`](https://github.com/DrakeB1234/VectorScore), a custom open-source TypeScript notation engine I built specifically for this ecosystem.
 
-```sh
-# recreate this project
-npx sv@0.15.2 create --template minimal --types ts --install npm ToneTools
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```sh
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```sh
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+## Local Development
+1. Clone the repository
+2. Install dependencies: `npm install`
+3. Run the development server: `npm run dev`
+4. Open `localhost:5173` in your browser.
