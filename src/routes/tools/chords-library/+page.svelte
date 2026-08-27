@@ -59,7 +59,7 @@
           >
             <div class="chord-button lay-col lay-gap-0">
               <p>{fullNote + chord.symbol}</p>
-              <p class="text-body-muted">{chord.name}</p>
+              <p class="text-body-muted text-truncate">{chord.name}</p>
             </div>
           </Button>
         {/each}
@@ -105,6 +105,11 @@
   .chord-button {
     align-items: start;
     padding: var(--space-4);
+    overflow: hidden;
+  }
+
+  .chord-button p {
+    max-width: 100%;
   }
 
   @media (max-width: 768px) {

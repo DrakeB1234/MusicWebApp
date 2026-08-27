@@ -22,17 +22,20 @@
 
   // Data
 
-  const chordObj = $derived(data.chordObj);
-  const chordInversions = $derived(data.chordInversions);
-  const chordIntervals = $derived(data.chordIntervals);
-  const chordAliases = $derived(data.chordAliases);
-  const similarChords = $derived(data.similarChords);
-  const secondaryDominantChord = $derived(data.secondaryDominantChord);
+  let {
+    chordObj,
+    chordInversions,
+    chordIntervals,
+    chordAliases,
+    similarChords,
+    secondaryDominantChord,
+    fullNoteNames,
+  } = $derived(data);
 
   let isChordInversions = $derived(data.chordInversions !== null);
   let isSimplifyNotesSelected = $state(false);
   let currentInversionSelected = $state(0);
-  let pianoSnapshotNotes = $derived(data.fullNoteNames);
+  let pianoSnapshotNotes = $derived(fullNoteNames);
 
   // Functions
 
@@ -72,6 +75,10 @@
 
   onDestroy(() => {
     pianoAudioService.stopAll();
+  });
+
+  $effect(() => {
+    currentInversionSelected = 0;
   });
 </script>
 
@@ -200,6 +207,7 @@
       <div class="similar-chords-container">
         {#each similarChords as chord}
           <Button
+            element="a"
             variant="text"
             href={encodeUrlChord(chord.tonic!, chord.symbol)}
             class="similar-chord-button lay-col lay-col--start-justify"

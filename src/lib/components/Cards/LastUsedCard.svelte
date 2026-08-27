@@ -19,13 +19,11 @@
     >
       <Icon {icon} />
     </div>
-    <div class="text-container">
+    <div class="space-above-xsmall">
       <h3>{title}</h3>
-      <p class="text-caption-muted text-max-width-med">{description}</p>
-    </div>
-
-    <div class="arrow-container">
-      <Icon icon="arrowRightAlt" color="var(--color-on-bg-surface-subtle)" />
+      <p class="text-caption-muted space-above-small text-max-width-med">
+        {description}
+      </p>
     </div>
   </div>
 </Button>
@@ -33,14 +31,10 @@
 <style>
   .lay-col {
     min-width: 200px;
+    justify-content: start;
   }
-  .text-container {
-    flex: 1;
-  }
+
   .icon-container {
     margin-bottom: auto;
-  }
-  .arrow-container {
-    margin-left: auto;
   }
 </style>

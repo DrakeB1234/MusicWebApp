@@ -87,7 +87,6 @@
 <Wrapper>
   <main>
     <PageHeaderContainer
-      subText="Scale"
       headerText="Back"
       fallbackHref="/tools/scales-library"
     />

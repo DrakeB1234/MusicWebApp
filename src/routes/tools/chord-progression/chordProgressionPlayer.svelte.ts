@@ -16,7 +16,7 @@ import {
   resolveMelodyTones,
   applySmartOmission,
 } from "./chordProgressionHelpers";
-import { convertNoteNameToObj, getFullNoteNameFromObj, incrementNoteNameByInterval } from "$lib/helpers/musicTheory";
+import { convertNoteNameToObj, detectChordsByNoteNames, getFullNoteNameFromObj, incrementNoteNameByInterval } from "$lib/helpers/musicTheory";
 import { keyNamesFlatted } from "$lib/helpers/musicTheoryConstants";
 
 export class ProgressionPlayer {
@@ -25,6 +25,7 @@ export class ProgressionPlayer {
   isPlaying: boolean = $state(false);
   currentProgressionIdx: number = $state(0);
   currentPlayedNotes: string[] = $state([]);
+  currentPlayedChord: string | null = $state(null);
   autoMelodyChordInversions: boolean = $state(true);
 
   currentMasterStepNumber: number = $state(0);
@@ -257,6 +258,10 @@ export class ProgressionPlayer {
         const melodyNotes = this.resolveMelodyNotes(melodyEvent, activeMelodyChord);
         this.scheduleChordPlayback(melodyNotes, sustainType, delayInMs);
         currentPlayedNoteStrings.push(...melodyNotes);
+
+        const detectedChords = detectChordsByNoteNames(melodyNotes);
+        const playedChord = detectedChords?.find(e => e.tonic === activeMelodyChord.tonic);
+        this.currentPlayedChord = playedChord ? `${playedChord.tonic}${playedChord.symbol}` : null;
       }
     }
 
@@ -305,6 +310,7 @@ export class ProgressionPlayer {
     this.currentChordStepNumber = 0;
     this.hasBassPlayedInCurrentChord = false;
     this.currentPlayedNotes = [];
+    this.currentPlayedChord = null;
   }
 
   // === PUBLIC METHODS ===

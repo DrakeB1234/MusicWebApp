@@ -37,14 +37,14 @@ export const exercisesData: DataEntry[] = [
     color: "green",
     icon: "musicNote"
   },
-  {
-    name: "Scales Companion",
-    description: "Companion for your daily practicing of scales, featuring midi detection, built-in metronome, and more!",
-    href: "/exercises/scales-companion",
-    urlName: "scales-companion",
-    color: "purple",
-    icon: Scale
-  },
+  // {
+  //   name: "Scales Companion",
+  //   description: "Companion for your daily practicing of scales, featuring midi detection, built-in metronome, and more!",
+  //   href: "/exercises/scales-companion",
+  //   urlName: "scales-companion",
+  //   color: "purple",
+  //   icon: Scale
+  // },
 ];
 
 export const toolsData: DataEntry[] = [

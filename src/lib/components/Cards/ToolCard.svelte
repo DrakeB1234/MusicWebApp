@@ -19,32 +19,18 @@
     >
       <Icon {icon} />
     </div>
-    <div class="space-above-small">
+    <div class="space-above-xsmall">
       <h3>{title}</h3>
-      <p class="text-caption-muted text-line-clamp-3 space-above-xsmall">
+      <p class="text-caption-muted text-line-clamp-3 space-above-small">
         {description}
       </p>
-    </div>
-    <div class="lay-row link-action space-above-base">
-      <p class="text-caption-muted">Open</p>
-      <Icon icon="arrowRightAlt" color="var(--color-on-bg-surface-subtle)" />
     </div>
   </div>
 </Button>
 
 <style>
-  :global(.btn.card-button) {
-    padding: var(--space-16);
-    background-color: var(--color-bg-surface-1);
-    border: 1px solid var(--color-border-subtle);
-    box-shadow: var(--shadow-1);
-  }
   .lay-col {
     height: 100%;
-  }
-  .link-action {
-    gap: var(--space-4);
-    margin-top: auto;
-    padding-top: var(--space-4);
+    justify-content: start;
   }
 </style>

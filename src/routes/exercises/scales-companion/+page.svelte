@@ -21,15 +21,10 @@
 
     <section class="header-card card space-above-base">
       <div class="header lay-row">
-        <div class="header__item--side"></div>
-        <div class="header__item">
-          <h3 class="text-heading-1">C Major</h3>
-        </div>
-        <div class="header__item--side lay-row">
-          <Button variant="text" size="icon-base">
-            <Icon icon="settings" />
-          </Button>
-        </div>
+        <h3 class="header__text text-heading-1">C Major</h3>
+        <Button variant="text" size="icon-base">
+          <Icon icon="settings" />
+        </Button>
       </div>
     </section>
   </main>
@@ -44,10 +39,9 @@
     margin: var(--app-padding);
   }
   .header {
-    justify-content: center;
+    justify-content: space-between;
   }
-  .header__item--side {
-    flex: 1;
-    justify-content: end;
+  .header__text {
+    padding-left: var(--space-16);
   }
 </style>

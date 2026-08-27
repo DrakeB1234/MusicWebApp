@@ -21,7 +21,7 @@
 
   // Tap Tempo Variables
   let tapTimes: number[] = [];
-  const MAX_TAPS = 5;
+  const MAX_TAPS = 8;
   const TAP_TIMEOUT = 2000;
 
   function handleTap() {
@@ -45,13 +45,9 @@
     }
 
     if (tapTimes.length >= 2) {
-      let totalInterval = 0;
-
-      for (let i = 1; i < tapTimes.length; i++) {
-        totalInterval += tapTimes[i] - tapTimes[i - 1];
-      }
-
-      const averageInterval = totalInterval / (tapTimes.length - 1);
+      // Get total time elapsed
+      const totalTimeElapsed = tapTimes[tapTimes.length - 1] - tapTimes[0];
+      const averageInterval = totalTimeElapsed / (tapTimes.length - 1);
 
       let calculatedBpm = Math.round(60000 / averageInterval);
 

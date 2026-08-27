@@ -83,4 +83,22 @@
     padding-bottom: var(--space-8);
     overflow-x: auto;
   }
+
+  .lay-grid-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: stretch;
+    gap: var(--space-8);
+  }
+
+  @media (min-width: 600px) {
+    .lay-grid-cards {
+      grid-template-columns: repeat(auto-fill, minmax(14em, 1fr));
+      gap: var(--space-12);
+    }
+
+    .last-used {
+      gap: var(--space-12);
+    }
+  }
 </style>

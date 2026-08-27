@@ -142,4 +142,5 @@ export enum chordInversionNames {
   "3rd",
   "4th",
   "5th",
+  "6th"
 }

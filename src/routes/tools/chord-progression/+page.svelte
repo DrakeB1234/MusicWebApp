@@ -62,6 +62,9 @@
     <div class="timeline-wrapper lay-grid-col">
       <p>Timeline</p>
       <ProgressionTimeline playerRef={player} bind:activeProgressionObjIndex />
+      {#if player.isPlaying}
+        <p>Current Chord: {player.currentPlayedChord}</p>
+      {/if}
     </div>
     <div class="chord-palette-wrapper space-above-xlarge lay-grid-col">
       <p>Chord Palette</p>

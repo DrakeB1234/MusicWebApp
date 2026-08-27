@@ -9,55 +9,46 @@
     children: Snippet;
   } = $props();
 
-  function handleBackdropClick(e: MouseEvent) {
-    if (e.target === e.currentTarget) {
-      isOpen = false;
-    }
-  }
+  let dialogElement: HTMLDialogElement;
 
-  function handleKeydown(e: KeyboardEvent) {
-    if (e.key === "Escape" && isOpen) {
-      isOpen = false;
+  $effect(() => {
+    if (isOpen) {
+      dialogElement.showModal();
+    } else if (dialogElement.open) {
+      dialogElement.close();
     }
+  });
+
+  function handleClose() {
+    isOpen = false;
   }
 </script>
 
-<svelte:window onkeydown={handleKeydown} />
-
-{#if isOpen}
-  <div class="modal-backdrop">
-    <div
-      onmousedown={handleBackdropClick}
-      role="dialog"
-      aria-modal="true"
-      tabindex="0"
-      class="modal-animation-wrapper"
-    >
-      {@render children()}
-    </div>
-  </div>
-{/if}
+<dialog bind:this={dialogElement} onclose={handleClose} class="modal-wrapper">
+  {@render children()}
+</dialog>
 
 <style>
-  .modal-backdrop {
+  .modal-wrapper {
     position: fixed;
     inset: 0;
-    z-index: 9999;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+
+    padding: var(--space-8);
+    border: none;
+    background-color: transparent;
+  }
+
+  .modal-wrapper::backdrop {
     background-color: rgba(0, 0, 0, 0.6);
   }
 
-  .modal-animation-wrapper {
-    position: fixed;
-    inset: 0;
-
-    display: flex;
-    flex-direction: column;
-
-    padding: var(--space-8);
-  }
-
   @media (min-width: 600px) {
-    .modal-animation-wrapper {
+    .modal-wrapper {
+      align-items: center;
       padding: var(--space-16);
     }
   }

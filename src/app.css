@@ -475,13 +475,6 @@ span,
   gap: var(--space-8);
 }
 
-.lay-grid-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(12em, 1fr));
-  align-items: stretch;
-  gap: var(--space-8);
-}
-
 .lay-grid-center {
   display: grid;
   place-items: center;
@@ -510,13 +503,21 @@ span,
   gap: 0;
 }
 
-/* ==== Vector Score Classes ==== */
+/* ==== Specific Target Element Classes ==== */
 .vs-note.correct-note {
   color: var(--color-bg-addon-green-contrast);
 }
 
 .vs-note.wrong-note {
   color: var(--color-bg-addon-red-contrast);
+}
+
+a.btn.card-button {
+  padding: var(--space-12);
+  padding-bottom: var(--space-24);
+  background-color: var(--color-bg-surface-1);
+  border: 1px solid var(--color-border-subtle);
+  box-shadow: var(--shadow-1);
 }
 
 /* ==== Global Media Queries ==== */

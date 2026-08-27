@@ -1,7 +1,6 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
   import IconDetailCardButton from "$lib/components/Cards/IconDetailCardButton.svelte";
-  import Icon from "$lib/components/Icons/Icon.svelte";
   import Modal from "$lib/components/Modal/Modal.svelte";
   import PageHeaderContainer from "$lib/components/PageHeaderContainer.svelte";
   import Button from "$lib/components/UI/Button.svelte";

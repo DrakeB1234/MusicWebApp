@@ -98,7 +98,7 @@
 </script>
 
 <section class="action-bar lay-row">
-  <div class="action-bar__play-button">
+  <div class="action-bar__button-container">
     <Button
       size="icon-base"
       circle
@@ -121,18 +121,16 @@
     </Button>
   </div>
 
-  <div class="action-bar__button-container">
-    <Button
-      variant="text"
-      popovertarget="popover-volume"
-      aria-label="Open change volume settings"
-    >
-      <div class="lay-input-label-col lay-gap-0">
-        <p class="text-body-muted">Volume</p>
-        <p class="text-heading-3">{pianoAudioService.volumeValue}</p>
-      </div>
-    </Button>
-  </div>
+  <Button
+    variant="text"
+    popovertarget="popover-volume"
+    aria-label="Open change volume settings"
+  >
+    <div class="lay-input-label-col lay-gap-0">
+      <p class="text-body-muted">Volume</p>
+      <p class="text-heading-3">{pianoAudioService.volumeValue}</p>
+    </div>
+  </Button>
   <Popover id="popover-volume">
     <div class="lay-grid-col lay-gap-16">
       <Label labelFor="input-volume">Volume {localVolumeValue}</Label>
@@ -146,18 +144,16 @@
     </div>
   </Popover>
 
-  <div class="action-bar__button-container">
-    <Button
-      variant="text"
-      popovertarget="popover-bpm"
-      aria-label="Open change BPM settings"
-    >
-      <div class="action-bar__button-container lay-input-label-col lay-gap-0">
-        <p class="text-body-muted">BPM</p>
-        <p class="text-heading-3">{playerRef.bpm}</p>
-      </div>
-    </Button>
-  </div>
+  <Button
+    variant="text"
+    popovertarget="popover-bpm"
+    aria-label="Open change BPM settings"
+  >
+    <div class="action-bar__button-container lay-input-label-col lay-gap-0">
+      <p class="text-body-muted">BPM</p>
+      <p class="text-heading-3">{playerRef.bpm}</p>
+    </div>
+  </Button>
   <Popover id="popover-bpm" ontoggle={handlePopoverToggle}>
     <div class="lay-input-label-col">
       <Label labelFor="input-bpm">BPM</Label>
@@ -172,18 +168,16 @@
     </div>
   </Popover>
 
-  <div class="action-bar__button-container">
-    <Button
-      variant="text"
-      popovertarget="popover-key"
-      aria-label="Open change key settings"
-    >
-      <div class="action-bar__button-container lay-input-label-col lay-gap-0">
-        <p class="text-body-muted">Key</p>
-        <p class="text-heading-3 text-truncate">{playerRef.globalKey}</p>
-      </div>
-    </Button>
-  </div>
+  <Button
+    variant="text"
+    popovertarget="popover-key"
+    aria-label="Open change key settings"
+  >
+    <div class="action-bar__button-container lay-input-label-col lay-gap-0">
+      <p class="text-body-muted">Key</p>
+      <p class="text-heading-3 text-truncate">{playerRef.globalKey}</p>
+    </div>
+  </Button>
   <Popover
     id="popover-key"
     bind:ref={popoverKeyRef}
@@ -228,20 +222,18 @@
     </div>
   </Popover>
 
-  <div class="action-bar__button-container">
-    <Button
-      variant="text"
-      popovertarget="popover-style"
-      aria-label="Open change music style settings"
-    >
-      <div class="action-bar__button-container lay-input-label-col lay-gap-0">
-        <p class="text-body-muted">Style</p>
-        <p class="text-heading-3 text-truncate">
-          {playerRef.currentStyleData.name}
-        </p>
-      </div>
-    </Button>
-  </div>
+  <Button
+    variant="text"
+    popovertarget="popover-style"
+    aria-label="Open change music style settings"
+  >
+    <div class="action-bar__button-container lay-input-label-col lay-gap-0">
+      <p class="text-body-muted">Style</p>
+      <p class="text-heading-3 text-truncate">
+        {playerRef.currentStyleData.name}
+      </p>
+    </div>
+  </Button>
   <Popover
     id="popover-style"
     bind:ref={popoverStyleRef}
@@ -270,20 +262,18 @@
     </div>
   </Popover>
 
-  <div class="action-bar__button-container">
-    <Button
-      variant="text"
-      popovertarget="popover-auto-voicing"
-      aria-label="Open change auto voicing settings"
-    >
-      <div class="action-bar__button-container lay-input-label-col lay-gap-0">
-        <p class="text-body-muted">Voicing</p>
-        <p class="text-heading-3 text-truncate">
-          {localAutoVoicingValue ? "Auto" : "None"}
-        </p>
-      </div>
-    </Button>
-  </div>
+  <Button
+    variant="text"
+    popovertarget="popover-auto-voicing"
+    aria-label="Open change auto voicing settings"
+  >
+    <div class="action-bar__button-container lay-input-label-col lay-gap-0">
+      <p class="text-body-muted">Voicing</p>
+      <p class="text-heading-3 text-truncate">
+        {localAutoVoicingValue ? "Auto" : "None"}
+      </p>
+    </div>
+  </Button>
   <Popover id="popover-auto-voicing" ontoggle={handlePopoverToggle}>
     <div class="lay-input-label-col">
       <Label labelFor="input-auto-voicing">Auto Voicing</Label>
@@ -309,13 +299,9 @@
     padding: var(--space-8) var(--space-12);
     overflow-x: auto;
   }
-  .action-bar__play-button {
-    flex-shrink: 0;
-    margin-right: var(--space-4);
-  }
   .action-bar__button-container {
-    flex-shrink: 0;
     max-width: 80px;
+    flex-shrink: 0;
   }
   .popover__bottom-buttons-container {
     justify-content: end;

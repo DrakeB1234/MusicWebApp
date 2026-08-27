@@ -77,6 +77,7 @@
       <div class="chords-container">
         {#each identifiedChords as chord (chord.tonic + chord.symbol)}
           <Button
+            element="a"
             variant="text"
             href={encodeUrlChord(chord.tonic!, chord.symbol)}
             class="link-card lay-col lay-col--start-justify"
