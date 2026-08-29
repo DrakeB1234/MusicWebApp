@@ -96,12 +96,12 @@ export class IntervalEarTrainingController {
       this.correctAnswers += 1;
       this.wrongGuessInterval = "";
       localStat[targetInterval].correct += 1;
-      sfxAudioService.play("correct");
+      sfxAudioService.play("correct_guess");
     } else {
       this.wrongAnswers += 1;
       this.wrongGuessInterval = guessedInterval;
       localStat[targetInterval].wrong += 1;
-      sfxAudioService.play("wrong");
+      sfxAudioService.play("wrong_guess");
     }
     statsDataService.saveSessionStats(localStat);
 

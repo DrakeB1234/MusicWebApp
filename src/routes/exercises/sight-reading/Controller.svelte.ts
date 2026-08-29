@@ -135,7 +135,7 @@ export class Controller {
       pianoAudioService.playNote(currentQuestion, "med");
     } else {
       this.wrongAnswers++;
-      sfxAudioService.play("wrong");
+      sfxAudioService.play("wrong_guess");
     }
 
     this.generateQuestion();
@@ -151,7 +151,7 @@ export class Controller {
       pianoAudioService.playNote(currentQuestion, "med");
     } else {
       this.wrongAnswers++;
-      sfxAudioService.play("wrong");
+      sfxAudioService.play("wrong_guess");
     }
 
     this.generateQuestion();

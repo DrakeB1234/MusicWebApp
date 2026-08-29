@@ -62,9 +62,10 @@
     <div class="timeline-wrapper lay-grid-col">
       <p>Timeline</p>
       <ProgressionTimeline playerRef={player} bind:activeProgressionObjIndex />
-      {#if player.isPlaying}
-        <p>Current Chord: {player.currentPlayedChord}</p>
-      {/if}
+      <p class="current-chord-text">
+        {player.currentPlayedChord &&
+          `Current Chord: ${player.currentPlayedChord}`}
+      </p>
     </div>
     <div class="chord-palette-wrapper space-above-xlarge lay-grid-col">
       <p>Chord Palette</p>
@@ -91,6 +92,10 @@
   }
   .timeline-wrapper {
     position: relative;
+  }
+
+  .current-chord-text {
+    min-height: 1.5rem;
   }
   @media (max-width: 768px) {
     .content-wrapper {

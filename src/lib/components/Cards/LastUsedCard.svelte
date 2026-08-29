@@ -21,7 +21,9 @@
     </div>
     <div class="space-above-xsmall">
       <h3>{title}</h3>
-      <p class="text-caption-muted space-above-small text-max-width-med">
+      <p
+        class="text-caption-muted space-above-small text-max-width-med text-line-clamp-3"
+      >
         {description}
       </p>
     </div>

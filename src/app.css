@@ -122,7 +122,7 @@ svg {
   --color-bg-page-active: var(--palette-slate-200);
   --color-bg-surface-1: var(--custom-slate-25);
   --color-bg-surface-1-active: oklch(94% 0.01 256);
-  --color-bg-surface-2: var(--palette-slate-100);
+  --color-bg-surface-2: oklch(95% .013 255.5);
   --color-bg-surface-2-active: var(--palette-slate-200);
   --color-on-bg-surface: var(--palette-slate-900);
   --color-on-bg-surface-subtle: var(--palette-slate-500);
@@ -159,6 +159,13 @@ svg {
 
   --color-bg-addon-green-contrast: oklch(66% 0.24 143);
   --color-bg-addon-red-contrast: oklch(48% 0.4 25);
+
+  --color-bg-track-red: oklch(46% 0.4 29);
+  --color-bg-track-yellow: oklch(88% 0.5 110);
+  --color-bg-track-blue: oklch(42% 0.4 264);
+  --color-bg-track-green: oklch(55% 0.5 160);
+  --color-bg-track-orange: oklch(80% 0.5 85);
+  --color-bg-track-purple: oklch(54% 0.38 300);
 
   --color-border: var(--palette-slate-400);
   --color-border-subtle: var(--palette-slate-300);
@@ -223,6 +230,13 @@ svg {
   --color-bg-addon-green-contrast: oklch(80% 0.5 143);
   --color-bg-addon-red-contrast: oklch(80% 0.5 25);
 
+  --color-bg-track-red: oklch(40% 0.4 29);
+  --color-bg-track-yellow: oklch(80% 0.5 110);
+  --color-bg-track-blue: oklch(40% 0.4 264);
+  --color-bg-track-green: oklch(50% 0.5 160);
+  --color-bg-track-orange: oklch(70% 0.5 85);
+  --color-bg-track-purple: oklch(48% 0.38 300);
+
   --color-border: oklch(50% 0.04 256);
   --color-border-subtle: oklch(37.203% 0.02295 272.953);
   --color-border-hr: oklch(54% 0.04 256);
@@ -231,8 +245,6 @@ svg {
   --shadow-2: 0 4px 12px -2px rgba(0, 0, 0, 0.33), 0 2px 4px -1px rgba(0, 0, 0, 0.22);
   --shadow-3: 0 5px 16px -2px rgba(0, 0, 0, 0.4), 0 3px 5px -1px rgba(0, 0, 0, 0.25);
 }
-
-@media(prefers-color-scheme: dark) {}
 
 /* ==== Global Elements ==== */
 body {
@@ -261,6 +273,32 @@ span {
 :is(input, select, button, textarea, a):focus-visible {
   outline: 2px solid var(--palette-blue-400);
   outline-offset: 2px;
+}
+
+/* ==== Color Utils ==== */
+
+[data-color="red"] {
+  --track-color: var(--color-bg-track-red);
+}
+
+[data-color="yellow"] {
+  --track-color: var(--color-bg-track-yellow);
+}
+
+[data-color="blue"] {
+  --track-color: var(--color-bg-track-blue);
+}
+
+[data-color="green"] {
+  --track-color: var(--color-bg-track-green);
+}
+
+[data-color="orange"] {
+  --track-color: var(--color-bg-track-orange);
+}
+
+[data-color="purple"] {
+  --track-color: var(--color-bg-track-purple);
 }
 
 /* ==== Text Utils ==== */
@@ -485,6 +523,10 @@ span,
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
+}
+
+.lay-gap-36 {
+  gap: var(--space-36);
 }
 
 .lay-gap-24 {

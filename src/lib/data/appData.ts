@@ -2,6 +2,7 @@ import type { IconType } from "$lib/components/Icons/Icon.svelte";
 import DAW from "$lib/components/Icons/DAW.svelte";
 import Metronome from "$lib/components/Icons/Metronome.svelte";
 import Scale from "$lib/components/Icons/Scale.svelte";
+import Polyrhythm from "$lib/components/Icons/Polyrhythm.svelte";
 
 interface DataEntry {
   name: string;
@@ -50,11 +51,19 @@ export const exercisesData: DataEntry[] = [
 export const toolsData: DataEntry[] = [
   {
     name: "Metronome",
-    description: "Easy to use and customize metronome with many options, including polyrhythms!",
+    description: "Easy to use and simple metronome to use for many musical applications!",
     href: "/tools/metronome",
     urlName: "metronome",
     color: "purple",
     icon: Metronome
+  },
+  {
+    name: "Polyrhythms",
+    description: "In depth and deeply customizable polyrhythm creator with many options and customization available!",
+    href: "/tools/polyrhythms",
+    urlName: "polyrhythms",
+    color: "purple",
+    icon: Polyrhythm
   },
   {
     name: "Indentify Chord",
