@@ -55,11 +55,11 @@
 </svelte:head>
 
 <main>
-  <div class="action-bar-wrapper">
-    <ActionBar playerRef={player} bind:currentScale />
-  </div>
   <div class="content-wrapper">
-    <div class="timeline-wrapper lay-grid-col">
+    <div class="action-bar-wrapper">
+      <ActionBar playerRef={player} bind:currentScale />
+    </div>
+    <div class="timeline-wrapper lay-grid-col space-above-large">
       <p>Timeline</p>
       <ProgressionTimeline playerRef={player} bind:activeProgressionObjIndex />
       <p class="current-chord-text">
@@ -82,13 +82,13 @@
 
 <style>
   .action-bar-wrapper {
-    background-color: var(--color-bg-surface-1);
-    border-bottom: 1px solid var(--color-border-subtle);
+    background-color: var(--color-bg-page);
+    border-bottom: 1px solid var(--color-border);
   }
   .content-wrapper {
     max-width: 1400px;
     margin-inline: auto;
-    padding: var(--space-16) var(--space-24);
+    padding: var(--space-12) var(--space-24);
   }
   .timeline-wrapper {
     position: relative;

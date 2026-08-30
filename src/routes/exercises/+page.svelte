@@ -5,6 +5,10 @@
   import { exercisesData } from "$lib/data/appData";
 </script>
 
+<svelte:head>
+  <title>Exercises | Tone Tools</title>
+</svelte:head>
+
 <Wrapper>
   <main>
     <PageHeaderContainer

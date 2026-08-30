@@ -5,6 +5,10 @@
   import { toolsData } from "$lib/data/appData";
 </script>
 
+<svelte:head>
+  <title>Tools | Tone Tools</title>
+</svelte:head>
+
 <Wrapper>
   <main>
     <PageHeaderContainer
