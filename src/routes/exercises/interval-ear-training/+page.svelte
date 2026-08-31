@@ -90,15 +90,15 @@
     </section>
 
     <section class="card">
-      <div class="lay-row">
+      <div class="flex-row">
         <Button onclick={onStartClick}>Start Exercise</Button>
         <Button variant="secondary" onclick={() => (isConfigOpen = true)}>
           Configure
         </Button>
       </div>
 
-      <p class="space-above-large">Selected Intervals</p>
-      <div class="lay-col space-above-small">
+      <p class="space-above-lg">Selected Intervals</p>
+      <div class="flex-col space-above-sm">
         {#each intervalObjs as interval (interval.interval)}
           <Button
             variant="outlined"
@@ -108,7 +108,7 @@
             onclick={() => handleIntervalButtonClick(interval)}
             class="interval-button"
           >
-            <div class="lay-row">
+            <div class="flex-row">
               <p class="interval-text">{interval.interval}</p>
               <p>{interval.name}</p>
             </div>

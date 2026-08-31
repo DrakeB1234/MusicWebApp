@@ -1,7 +1,7 @@
 <script lang="ts">
   import Icon from "$lib/components/Icons/Icon.svelte";
   import Button from "$lib/components/UI/Button.svelte";
-  import { onMount } from "svelte";
+  import { onMount, untrack } from "svelte";
   import { MusicStaff } from "vector-score";
   import "$lib/components/Modal/modal.css";
   import { stepNoteName } from "$lib/helpers/musicTheory";
@@ -78,21 +78,28 @@
     onResponse(true, { low: lowRange, high: highRange });
   }
 
-  onMount(() => {
-    if (!staffElement) return;
-    vectorScoreStaff = new MusicStaff(staffElement, {
-      staffType: currentStaffType,
-      staffBackgroundColor: "var(--color-bg-surface-1)",
-      staffColor: "var(--color-on-bg-surface)",
-      width: 160,
-      noteStartX: 0,
-      scale: 1.4,
-      spaceAbove: 4,
-      spaceBelow: 4,
-    });
+  $effect(() => {
+    const activeClef = currentStaffType;
 
-    vectorScoreStaff.drawNote([lowRange, highRange]);
-    vectorScoreStaff.justifyNotes();
+    untrack(() => {
+      if (!staffElement) return;
+
+      staffElement.innerHTML = "";
+
+      vectorScoreStaff = new MusicStaff(staffElement, {
+        staffType: activeClef,
+        staffBackgroundColor: "var(--color-bg-surface-1)",
+        staffColor: "var(--color-on-bg-surface)",
+        width: 160,
+        noteStartX: 0,
+        scale: 1.4,
+        spaceAbove: 4,
+        spaceBelow: 4,
+      });
+
+      vectorScoreStaff.drawNote([lowRange, highRange]);
+      vectorScoreStaff.justifyNotes();
+    });
   });
 </script>
 
@@ -104,8 +111,8 @@
     </Button>
   </div>
 
-  <div class="modal-body lay-row">
-    <div class="staff-buttons lay-col">
+  <div class="modal-body flex-row">
+    <div class="staff-buttons flex-col">
       <Button
         variant="outlined"
         size="icon-base"
@@ -114,7 +121,7 @@
       >
         <Icon icon="arrowUp" />
       </Button>
-      <div class="lay-col lay-gap-4">
+      <div class="flex-col lay-gap-xsm">
         <p class="text-caption">Low Range</p>
         <p>{lowRange}</p>
       </div>
@@ -128,9 +135,9 @@
       </Button>
     </div>
 
-    <div class="staff-container lay-grid-center" bind:this={staffElement}></div>
+    <div class="staff-container grid-center" bind:this={staffElement}></div>
 
-    <div class="staff-buttons lay-col">
+    <div class="staff-buttons flex-col">
       <Button
         variant="outlined"
         size="icon-base"
@@ -139,7 +146,7 @@
       >
         <Icon icon="arrowUp" />
       </Button>
-      <div class="lay-col lay-gap-4">
+      <div class="flex-col lay-gap-xsm">
         <p class="text-caption">High Range</p>
         <p>{highRange}</p>
       </div>

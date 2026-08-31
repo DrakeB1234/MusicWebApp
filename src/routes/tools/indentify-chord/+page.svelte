@@ -63,15 +63,15 @@
 
       <div class="card-content space-above-base">
         <p>Selected Notes:</p>
-        <div class="notes-container lay-row space-above-small">
+        <div class="notes-container flex-row space-above-sm">
           {#each selectedNotes as note}
-            <p class="separated-item">{note}</p>
+            <p class="text-separated">{note}</p>
           {/each}
         </div>
       </div>
     </section>
 
-    <section class="lay-col space-above-base">
+    <section class="flex-col space-above-base">
       <h3>Results</h3>
       <hr />
       <div class="chords-container">
@@ -80,18 +80,18 @@
             element="a"
             variant="text"
             href={encodeUrlChord(chord.tonic!, chord.symbol)}
-            class="link-card lay-col lay-col--start-justify"
+            class="link-card flex-col lay-align-start"
           >
             <p>{chord.tonic + chord.symbol}</p>
-            <div class="notes-container lay-row">
+            <div class="notes-container flex-row">
               {#each chord.notes as note (note)}
-                <p class="separated-item text-body-muted">{note}</p>
+                <p class="text-separated text-body-subtle">{note}</p>
               {/each}
             </div>
           </Button>
         {:else}
           <div class="empty-container">
-            <p class="text-body-muted">No chords found</p>
+            <p class="text-body-subtle">No chords found</p>
           </div>
         {/each}
       </div>

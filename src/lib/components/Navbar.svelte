@@ -25,8 +25,8 @@
   });
 </script>
 
-<div class="desktop-header lay-row">
-  <a href="/" class="link lay-row">
+<div class="desktop-header flex-row">
+  <a href="/" class="link flex-row">
     <img
       src="/icon-192x192.webp"
       alt="Tone Tools Logo"
@@ -36,21 +36,21 @@
     <h1 class="text-heading-2">Tone Tools</h1>
   </a>
 
-  <div class="desktop-header__links lay-row">
-    <a href="/exercises" class="link text-heading-3">Exercises</a>
-    <a href="/tools" class="link text-heading-3">Tools</a>
-    <a href="/about" class="link text-heading-3">About</a>
-    <a href="/" class="link text-heading-3">Settings</a>
+  <div class="desktop-header__links flex-row">
+    <a href="/exercises" class="link">Exercises</a>
+    <a href="/tools" class="link">Tools</a>
+    <a href="/about" class="link">About</a>
+    <a href="/" class="link">Settings</a>
   </div>
 
-  <div class="desktop-header__links lay-row">
+  <div class="desktop-header__links flex-row">
     <Button variant="text" class="link" onclick={handleToggleLightMode}
       ><Icon icon={isDarkMode ? "lightMode" : "darkMode"} /></Button
     >
   </div>
 </div>
 
-<div class="mobile-header lay-row">
+<div class="mobile-header flex-row">
   <a href="/" class="link">
     <img
       src="/icon-192x192.webp"
@@ -74,8 +74,8 @@
   onclick={toggleMobileMenu}
 ></div>
 <aside class="mobile-sidebar" class:hide={!mobileMenuOpen}>
-  <div class="mobile-sidebar__top lay-row">
-    <a href="/" class="link lay-row">
+  <div class="mobile-sidebar__top flex-row">
+    <a href="/" class="link flex-row">
       <img
         src="/icon-192x192.webp"
         alt="Tone Tools Logo"
@@ -90,9 +90,9 @@
     </Button>
   </div>
 
-  <hr class="space-above-small" />
+  <hr class="space-above-sm" />
 
-  <div class="mobile-sidebar__links lay-col lay-gap-4">
+  <div class="mobile-sidebar__links flex-col lay-gap-xsm">
     <a href="/exercises" class="link link--sidebar">
       <Icon icon="ear" />
       <p>Exercises</p>
@@ -105,7 +105,7 @@
 
   <hr class="space-above-base" />
 
-  <div class="mobile-sidebar__links lay-col">
+  <div class="mobile-sidebar__links flex-col">
     <a href="/about" class="link link--sidebar">
       <Icon icon="about" />
       <p>About</p>
@@ -134,7 +134,7 @@
     content: "";
     background-color: var(--color-border-subtle);
     width: 1px;
-    height: calc(48px + var(--space-16));
+    height: calc(48px + var(--space-8));
   }
 
   .desktop-header__links:last-child {

@@ -20,7 +20,7 @@
     </div>
 
     <section class="header-card card space-above-base">
-      <div class="header lay-row">
+      <div class="header flex-row">
         <h3 class="header__text text-heading-1">C Major</h3>
         <Button variant="text" size="icon-base">
           <Icon icon="settings" />

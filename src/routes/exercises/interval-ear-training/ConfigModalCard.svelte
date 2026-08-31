@@ -68,9 +68,9 @@
   </div>
 
   <div class="modal-body">
-    <div class="lay-input-label-col">
+    <div class="flex-col__input-label">
       <p class="text-caption">Type</p>
-      <div class="lay-row">
+      <div class="flex-row">
         <Button
           variant="outlined"
           state={configData.selectedTypes.includes("melodic") ? "on" : "off"}
@@ -83,9 +83,9 @@
         >
       </div>
     </div>
-    <div class="lay-input-label-col space-above-base">
+    <div class="flex-col__input-label space-above-base">
       <p class="text-caption">Direction</p>
-      <div class="lay-row">
+      <div class="flex-row">
         <Button
           variant="outlined"
           state={configData.selectedDirections.includes("ascending")
@@ -104,8 +104,8 @@
     </div>
     <p class="space-above-base">Octave Range</p>
 
-    <div class="select-inputs lay-row space-above-small">
-      <div class="lay-input-label-col">
+    <div class="select-inputs flex-row space-above-sm">
+      <div class="flex-col__input-label">
         <Label labelFor="octave-low">Low</Label>
         <Select
           id="octave-low"
@@ -118,7 +118,7 @@
           ]}
         />
       </div>
-      <div class="lay-input-label-col">
+      <div class="flex-col__input-label">
         <Label labelFor="octave-high">High</Label>
         <Select
           id="octave-high"
@@ -131,7 +131,7 @@
         />
       </div>
     </div>
-    <div class="lay-input-label-col space-above-large">
+    <div class="flex-col__input-label space-above-lg">
       <Label labelFor="questions">Questions</Label>
       <Input
         id="questions"

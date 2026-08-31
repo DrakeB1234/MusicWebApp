@@ -21,10 +21,10 @@
   <main>
     <HeroCard />
 
-    <section class="space-above-large">
+    <section class="space-above-lg">
       <h3>Last Used</h3>
 
-      <div class="last-used lay-row space-above-base">
+      <div class="last-used flex-row space-above-base">
         {#each lastUsedItems as item}
           <LastUsedCard
             title={item.name}
@@ -39,7 +39,7 @@
 
     <hr class="space-above-base" />
 
-    <section class="space-above-large">
+    <section class="space-above-lg">
       <h3>Exercises</h3>
 
       <div class="lay-grid-cards space-above-base">
@@ -55,7 +55,7 @@
       </div>
     </section>
 
-    <section class="space-above-large">
+    <section class="space-above-lg">
       <h3>Tools</h3>
 
       <div class="lay-grid-cards space-above-base">

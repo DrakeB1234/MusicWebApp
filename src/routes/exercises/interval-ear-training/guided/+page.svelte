@@ -31,26 +31,26 @@
       <div class="title-container">
         <h2>Melodic Path</h2>
       </div>
-      <div class="content-container lay-col space-above-small">
+      <div class="content-container flex-col space-above-sm">
         {#each earTrainingGuideEntry as entry, i}
           <Button
             element="button"
             variant="text"
             onclick={() => handleEarEntryClick(i)}
-            class="lay-row--start-justify"
+            class="lay-justify-start"
           >
-            <div class="lay-row entry-container">
+            <div class="flex-row entry-container">
               <div class="entry-number-badge">
                 <p>{i + 1}</p>
               </div>
               <div class="entry-content-container">
                 <h3 class="text-heading-2">{entry.title}</h3>
-                <div class="entry-pills-container lay-row space-above-xsmall">
+                <div class="entry-pills-container flex-row space-above-xsm">
                   {#each entry.exerciseConfig.selectedIntervals as intervalObj}
                     <div class="pill">{intervalObj.interval}</div>
                   {/each}
                 </div>
-                <p class="space-above-xsmall">{entry.description}</p>
+                <p class="space-above-xsm">{entry.description}</p>
               </div>
             </div>
           </Button>

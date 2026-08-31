@@ -79,7 +79,7 @@
       </Button>
     {/each}
   </div>
-  <div class="bottom-container lay-row">
+  <div class="bottom-container flex-row">
     <Button
       variant="secondary"
       size="icon-large"

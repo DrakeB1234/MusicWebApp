@@ -12,7 +12,7 @@
   let { id, value, onStepperClick }: Props = $props();
 </script>
 
-<div class="lay-row">
+<div class="flex-row">
   <div class="decrement-button-wrapper">
     <Button
       variant="outlined"

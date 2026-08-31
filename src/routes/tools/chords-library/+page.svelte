@@ -55,11 +55,11 @@
             element="a"
             variant="outlined"
             href={encodeUrlChord(fullNote, chord.symbol)}
-            class="lay-row--start-justify"
+            class="lay-justify-start"
           >
-            <div class="chord-button lay-col lay-gap-0">
+            <div class="chord-button flex-col lay-gap-none">
               <p>{fullNote + chord.symbol}</p>
-              <p class="text-body-muted text-truncate">{chord.name}</p>
+              <p class="text-body-subtle text-truncate">{chord.name}</p>
             </div>
           </Button>
         {/each}

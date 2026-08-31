@@ -107,8 +107,8 @@
       <Button onclick={onStartClick}>Start Exercise</Button>
       <hr class="space-above-base" />
       <p class="space-above-base">Config</p>
-      <div class="lay-col space-above-base lay-gap-16">
-        <div class="input lay-input-label-col">
+      <div class="flex-col space-above-base lay-gap-base">
+        <div class="input flex-col__input-label">
           <Label labelFor="clef">Clef</Label>
           <Select
             id="clef"
@@ -121,7 +121,7 @@
             ]}
           />
         </div>
-        <div class="input lay-input-label-col">
+        <div class="input flex-col__input-label">
           <Label labelFor="timer">Timer</Label>
           <Input
             id="timer"
@@ -132,21 +132,21 @@
             bind:value={configOptions.timer}
           />
         </div>
-        <div class="input lay-input-label-col">
+        <div class="input flex-col__input-label">
           <p class="text-caption">Note Range</p>
           <p class="text-heading-3">
             {configOptions.noteRange.low} - {configOptions.noteRange.high}
           </p>
           <Button
             variant="outlined"
-            class="space-above-small"
+            class="space-above-sm"
             onclick={() => (isNoteRangeModalOpen = true)}>Set Note Range</Button
           >
         </div>
 
-        <div class="lay-input-label-col">
+        <div class="flex-col__input-label">
           <p class="text-caption">Accidentals</p>
-          <div class="lay-row">
+          <div class="flex-row">
             <Button
               variant="outlined"
               state={configOptions.allowedAccidentals.includes("n")

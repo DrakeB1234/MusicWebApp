@@ -50,15 +50,15 @@
       fallbackHref="/exercises/interval-ear-training"
     />
 
-    <section class="card lay-col">
+    <section class="card flex-col">
       {#each statsArray as stat (stat.interval)}
-        <div class="interval-stat lay-row">
+        <div class="interval-stat flex-row">
           <div class="interval-stat__text">
             <p class="text-heading-3">{stat.interval}</p>
             <p class="text-caption">{stat.name}</p>
           </div>
-          <div class="interval-stat__stats lay-col">
-            <div class="lay-row lay-gap-0">
+          <div class="interval-stat__stats flex-col">
+            <div class="flex-row lay-gap-none">
               {#if stat.correctPercent > 0}
                 <span class="stat correct" style="width: {stat.correctPercent}%"
                 ></span>
@@ -68,20 +68,20 @@
                 ></span>
               {/if}
             </div>
-            <div class="stats__text lay-row">
+            <div class="stats__text flex-row">
               <p>Correct {stat.correct}</p>
               <p>Wrong {stat.wrong}</p>
             </div>
           </div>
         </div>
       {:else}
-        <div class="no-data lay-col">
+        <div class="no-data flex-col">
           <p class="text-heading-3">No data found.</p>
           <p>Try playing some more exercises to see your stats!</p>
         </div>
       {/each}
     </section>
-    <div class="reset-stats lay-row space-above-base">
+    <div class="reset-stats flex-row space-above-base">
       <Button variant="destructive-outlined" onclick={handleResetDataPressed}
         >Reset Data</Button
       >

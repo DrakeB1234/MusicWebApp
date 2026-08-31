@@ -25,7 +25,7 @@
   }
 </script>
 
-<div class="header-container lay-row lay-gap-4">
+<div class="header-container flex-row lay-gap-xsm">
   <Button
     variant="text"
     size="icon-small"

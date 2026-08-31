@@ -35,7 +35,7 @@
   </div>
 
   <div class="modal-body">
-    <p class="text-max-width-med">{message}</p>
+    <p class="text-max-width-base">{message}</p>
   </div>
 
   <div class="modal-footer">

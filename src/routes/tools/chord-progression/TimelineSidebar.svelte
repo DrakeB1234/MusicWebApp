@@ -135,8 +135,8 @@
 <aside class="timeline-sidebar-wrapper" class:hide={!isSidebarOpen}>
   {#if currentProgressionChord && chordDraft}
     <div class="timeline-sidebar">
-      <div class="timeline-sidebar__header lay-row lay-gap-0">
-        <div class="lay-col lay-gap-0">
+      <div class="timeline-sidebar__header flex-row lay-gap-none">
+        <div class="flex-col lay-gap-none">
           <p class="text-caption">Edit Chord</p>
           <p class="text-heading-3">
             {currentProgressionChord.tonic}{currentProgressionChord.symbol}
@@ -154,7 +154,7 @@
         </div>
       </div>
       <div class="timeline-sidebar__content">
-        <div class="lay-input-label-col">
+        <div class="flex-col__input-label">
           <Label labelFor="duration">Duration</Label>
           <StepperInput
             id="duration"
@@ -162,7 +162,7 @@
             onStepperClick={onDurationStepperClick}
           />
         </div>
-        <div class="lay-input-label-col space-above-base">
+        <div class="flex-col__input-label space-above-base">
           <Label labelFor="position">Position</Label>
           <StepperInput
             id="position"
@@ -172,8 +172,8 @@
         </div>
         <hr class="space-above-base" />
         <p class="text-heading-3 space-above-base">Change Chord</p>
-        <div class="note-input lay-row space-above-small">
-          <div class="lay-input-label-col">
+        <div class="note-input flex-row space-above-sm">
+          <div class="flex-col__input-label">
             <Label labelFor="note">Note</Label>
             <Select
               id="note"
@@ -181,7 +181,7 @@
               options={naturalNoteNames}
             />
           </div>
-          <div class="lay-input-label-col">
+          <div class="flex-col__input-label">
             <Label labelFor="accidental">Acc</Label>
             <Select
               id="accidental"
@@ -189,7 +189,7 @@
               options={accidentalNames}
             />
           </div>
-          <div class="note-input__chord lay-input-label-col">
+          <div class="note-input__chord flex-col__input-label">
             <Label labelFor="chord">Chord</Label>
             <Select
               id="chord"
@@ -199,9 +199,9 @@
           </div>
         </div>
 
-        <div class="timeline-sidebar__bottom-buttons space-above-large lay-row">
+        <div class="timeline-sidebar__bottom-buttons space-above-lg flex-row">
           <Button variant="destructive-outlined" onclick={handleRemoveClick}>
-            <Icon icon="delete" size="var(--icon-size-small)" />
+            <Icon icon="delete" size="var(--icon-size-sm)" />
             Remove
           </Button>
           <Button onclick={handleApplyClick}>Apply</Button>

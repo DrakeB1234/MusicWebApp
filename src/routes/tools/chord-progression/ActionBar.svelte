@@ -97,7 +97,7 @@
   }
 </script>
 
-<section class="action-bar lay-row">
+<section class="action-bar flex-row">
   <div class="action-bar__button-container">
     <Button
       size="icon-base"
@@ -126,13 +126,13 @@
     popovertarget="popover-volume"
     aria-label="Open change volume settings"
   >
-    <div class="lay-input-label-col lay-gap-0">
-      <p class="text-body-muted">Volume</p>
+    <div class="flex-col__input-label lay-gap-none">
+      <p class="text-body-subtle">Volume</p>
       <p class="text-heading-3">{pianoAudioService.volumeValue}</p>
     </div>
   </Button>
   <Popover id="popover-volume">
-    <div class="lay-grid-col lay-gap-16">
+    <div class="grid-col lay-gap-base">
       <Label labelFor="input-volume">Volume {localVolumeValue}</Label>
       <Slider
         id="input-volume"
@@ -149,13 +149,15 @@
     popovertarget="popover-bpm"
     aria-label="Open change BPM settings"
   >
-    <div class="action-bar__button-container lay-input-label-col lay-gap-0">
-      <p class="text-body-muted">BPM</p>
+    <div
+      class="action-bar__button-container flex-col__input-label lay-gap-none"
+    >
+      <p class="text-body-subtle">BPM</p>
       <p class="text-heading-3">{playerRef.bpm}</p>
     </div>
   </Button>
   <Popover id="popover-bpm" ontoggle={handlePopoverToggle}>
-    <div class="lay-input-label-col">
+    <div class="flex-col__input-label">
       <Label labelFor="input-bpm">BPM</Label>
       <Input
         id="input-bpm"
@@ -173,8 +175,10 @@
     popovertarget="popover-key"
     aria-label="Open change key settings"
   >
-    <div class="action-bar__button-container lay-input-label-col lay-gap-0">
-      <p class="text-body-muted">Key</p>
+    <div
+      class="action-bar__button-container flex-col__input-label lay-gap-none"
+    >
+      <p class="text-body-subtle">Key</p>
       <p class="text-heading-3 text-truncate">{playerRef.globalKey}</p>
     </div>
   </Button>
@@ -184,7 +188,7 @@
     ontoggle={handlePopoverToggle}
   >
     <div>
-      <div class="lay-input-label-col">
+      <div class="flex-col__input-label">
         <Label labelFor="input-key">Key</Label>
         <Select
           id="input-key"
@@ -192,7 +196,7 @@
           options={keyNamesFlatted}
         />
       </div>
-      <div class="lay-input-label-col space-above-small">
+      <div class="flex-col__input-label space-above-sm">
         <Label labelFor="input-scale">Scale</Label>
         <Select
           id="input-scale"
@@ -200,7 +204,7 @@
           options={getAllModes()}
         />
       </div>
-      <div class="lay-input-label-col space-above-small">
+      <div class="flex-col__input-label space-above-sm">
         <Label labelFor="toggle-auto-transpose">Tranpose Chords</Label>
         <Toggle
           id="toggle-auto-transpose"
@@ -208,7 +212,7 @@
         />
       </div>
 
-      <div class="popover__bottom-buttons-container lay-row space-above-base">
+      <div class="popover__bottom-buttons-container flex-row space-above-base">
         <Button
           variant="secondary"
           onclick={handleCancelKeyPopoverClick}
@@ -227,8 +231,10 @@
     popovertarget="popover-style"
     aria-label="Open change music style settings"
   >
-    <div class="action-bar__button-container lay-input-label-col lay-gap-0">
-      <p class="text-body-muted">Style</p>
+    <div
+      class="action-bar__button-container flex-col__input-label lay-gap-none"
+    >
+      <p class="text-body-subtle">Style</p>
       <p class="text-heading-3 text-truncate">
         {playerRef.currentStyleData.name}
       </p>
@@ -240,7 +246,7 @@
     ontoggle={handlePopoverToggle}
   >
     <div>
-      <div class="lay-input-label-col">
+      <div class="flex-col__input-label">
         <Label labelFor="music-style">Music Style</Label>
         <Select
           id="music-style"
@@ -248,7 +254,7 @@
           options={styleSelectOptions}
         />
       </div>
-      <div class="popover__bottom-buttons-container lay-row space-above-base">
+      <div class="popover__bottom-buttons-container flex-row space-above-base">
         <Button
           variant="secondary"
           onclick={handleCancelStylePopoverClick}
@@ -267,15 +273,17 @@
     popovertarget="popover-auto-voicing"
     aria-label="Open change auto voicing settings"
   >
-    <div class="action-bar__button-container lay-input-label-col lay-gap-0">
-      <p class="text-body-muted">Voicing</p>
+    <div
+      class="action-bar__button-container flex-col__input-label lay-gap-none"
+    >
+      <p class="text-body-subtle">Voicing</p>
       <p class="text-heading-3 text-truncate">
         {localAutoVoicingValue ? "Auto" : "None"}
       </p>
     </div>
   </Button>
   <Popover id="popover-auto-voicing" ontoggle={handlePopoverToggle}>
-    <div class="lay-input-label-col">
+    <div class="flex-col__input-label">
       <Label labelFor="input-auto-voicing">Auto Voicing</Label>
       <Toggle
         id="input-auto-voicing"

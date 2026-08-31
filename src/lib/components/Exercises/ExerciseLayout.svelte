@@ -19,7 +19,7 @@
 
 <Button variant="outlined" onclick={handleExitClick}>Exit</Button>
 
-<div class="game-container space-above-small">
+<div class="game-container space-above-sm">
   <div class="message-container">
     <p>{gameContainerMessage}</p>
   </div>

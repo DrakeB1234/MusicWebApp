@@ -143,7 +143,7 @@
       progressionItem.chordInfo!.tonic + progressionItem.chordInfo!.symbol}
     {@const beatsText = progressionItem.beats > 1 ? "beats" : "beat"}
     <div
-      class="chord-item lay-grid-center"
+      class="chord-item grid-center"
       class:active={playerRef.isPlaying &&
         playerRef.currentProgressionIdx === i}
       draggable="true"
@@ -163,7 +163,7 @@
         fullWidth
         onclick={() => handleChordClick(i)}
       >
-        <div class="chord-item__chord-container lay-col lay-gap-0">
+        <div class="chord-item__chord-container flex-col lay-gap-none">
           <p class="text-heading-3 text-truncate">{fullChordSymbol}</p>
           <p class="text-caption text-truncate">
             {progressionItem.beats}
@@ -174,7 +174,7 @@
     </div>
   {/each}
 </section>
-<div class="drag-remove lay-grid-center" class:hide={!isDragging}>
+<div class="drag-remove grid-center" class:hide={!isDragging}>
   <!-- svelte-ignore a11y_no_static_element_interactions -->
   <div
     class="drag-remove__remove-button"

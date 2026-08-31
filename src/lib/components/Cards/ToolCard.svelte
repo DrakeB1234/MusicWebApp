@@ -12,16 +12,16 @@
 </script>
 
 <Button element="a" variant="text" class="card-button" {href}>
-  <div class="lay-col">
+  <div class="flex-col">
     <div
       class="icon-container"
       style="background-color: var(--color-bg-addon-{color});"
     >
       <Icon {icon} />
     </div>
-    <div class="space-above-xsmall">
+    <div class="space-above-xsm">
       <h3>{title}</h3>
-      <p class="text-caption-muted text-line-clamp-3 space-above-small">
+      <p class="text-caption-subtle text-line-clamp-3 space-above-sm">
         {description}
       </p>
     </div>
@@ -29,7 +29,7 @@
 </Button>
 
 <style>
-  .lay-col {
+  .flex-col {
     height: 100%;
     justify-content: start;
   }

@@ -3,7 +3,7 @@
   max-height: 100%;
 
   background-color: var(--color-bg-surface-1);
-  border-radius: var(--radius-large);
+  border-radius: var(--radius-lg);
 
   display: flex;
   flex-direction: column;

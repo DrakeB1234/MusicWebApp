@@ -15,7 +15,7 @@
     <PageHeaderContainer headerText="About" fallbackHref="/" />
 
     <section class="card">
-      <div class="about__logo lay-col">
+      <div class="about__logo flex-col">
         <img
           src="/icon-192x192.webp"
           alt="Tone Tools Logo"
@@ -24,16 +24,12 @@
         />
         <h2 class="text-heading-2">Tone Tools</h2>
       </div>
-      <p
-        class="text-body text-max-width-large text-body-muted space-above-base"
-      >
+      <p class="text-body text-max-width-lg text-body-subtle space-above-base">
         Tone Tools is a open source project aiming to provide useful music
         theory tools and exercises. If you like this project, be sure to leave a
         star on my github repo for this project!
       </p>
-      <p
-        class="text-body text-max-width-large text-body-muted space-above-base"
-      >
+      <p class="text-body text-max-width-lg text-body-subtle space-above-base">
         Im always open to suggestions and recommended to use the github repo
         below to let me know what you have to say!
       </p>
@@ -137,9 +133,8 @@
 
       <div class="about__content">
         <h2 class="text-heading-2">Inspirations</h2>
-        <p class="text-body-muted space-above-small">
-          Tone Tools pulled inspired by the UI and functionality of these
-          fantastic resources:
+        <p class="text-body-subtle space-above-sm">
+          Tone Tools pulled inspiration from these fantastic resources:
         </p>
 
         <div class="lay-grid-cards space-above-base">
@@ -154,17 +149,10 @@
             </li>
             <li>
               <a
-                href="https://www.musicca.com/chord-player"
-                target="_blank"
-                rel="noreferrer">Musicca</a
-              > - UI design & muting
-            </li>
-            <li>
-              <a
                 href="https://whatchord.org/chords/B-flat"
                 target="_blank"
                 rel="noreferrer">WhatChord</a
-              > - Lookup tool
+              > - Chord Lookup tool
             </li>
             <li>
               <a

@@ -26,10 +26,10 @@
   }
 </script>
 
-<div class="lay-col">
-  <div class="lay-input-label-col">
+<div class="flex-col">
+  <div class="flex-col__input-label">
     <Label>Note</Label>
-    <div class="note-buttons lay-row">
+    <div class="note-buttons flex-row">
       {#each naturalNoteNames as note}
         <Button
           variant="secondary"
@@ -42,9 +42,9 @@
     </div>
   </div>
 
-  <div class="lay-input-label-col">
+  <div class="flex-col__input-label">
     <Label>Accidental</Label>
-    <div class="accidental-buttons lay-row">
+    <div class="accidental-buttons flex-row">
       <Button
         variant="secondary"
         state={accidentalValue === "n" ? "on" : "off"}

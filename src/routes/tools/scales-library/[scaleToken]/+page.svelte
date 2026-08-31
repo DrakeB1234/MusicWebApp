@@ -104,7 +104,7 @@
           <Icon icon="volumeUp" />
         </Button>
       </div>
-      <div class="toggle-button-container space-above-large">
+      <div class="toggle-button-container space-above-lg">
         <Label labelFor="simplify-notes">Simplify Notes</Label>
         <Toggle
           bind:toggled={isSimplifyNotesSelected}
@@ -115,7 +115,7 @@
 
       <hr class="space-above-base" />
 
-      <div class="scale-notes-container lay-row">
+      <div class="scale-notes-container flex-row">
         {#each data.scaleNotes as note, index (note)}
           {@const rawNote = note.letter + (note.accidental ?? "")}
           {@const displayNote = isSimplifyNotesSelected
@@ -145,9 +145,9 @@
 
       <div class="card-high">
         <h3 class="text-heading-3">Numerals</h3>
-        <div class="space-above-small lay-row lay-gap-4">
+        <div class="space-above-sm flex-row lay-gap-xsm">
           {#each data.numerals as note (note)}
-            <p class="separated-item">{note}</p>
+            <p class="text-separated">{note}</p>
           {/each}
         </div>
 
@@ -156,15 +156,15 @@
         <h3 class="text-heading-3">
           Formula <span class="text-caption">(relative to major)</span>
         </h3>
-        <div class="space-above-small lay-row lay-gap-4">
+        <div class="space-above-sm flex-row lay-gap-xsm">
           {#each data.formula as note (note)}
-            <p class="separated-item">{note}</p>
+            <p class="text-separated">{note}</p>
           {/each}
         </div>
 
         <hr class="divider" />
         <h3 class="text-heading-3">Relative Modes</h3>
-        <p class="space-above-small">
+        <p class="space-above-sm">
           {data.relativeModes?.majorMode}&nbsp;|&nbsp;{data.relativeModes
             ?.minorMode}
         </p>
@@ -174,24 +174,24 @@
     <section class="card">
       <h2>Diatonic Chords</h2>
 
-      <div class="lay-col space-above-small">
+      <div class="flex-col space-above-sm">
         {#each data.triads as triadObj, index (triadObj.name)}
           <Button
             variant="outlined"
             onclick={() => handlePlayChord(index)}
-            class="lay-row--start-justify"
+            class="lay-justify-start"
           >
-            <div class="chord-button lay-row lay-gap-16">
+            <div class="chord-button flex-row lay-gap-base">
               <h3 class="pill primary">{data.numerals[index]}</h3>
               <div class="text-container">
                 <h3>{triadObj.tonic + triadObj.symbol}</h3>
-                <div class="lay-row">
+                <div class="flex-row">
                   {#each triadObj.notes as note, i (note)}
                     {@const rawNote = note.letter + (note.accidental ?? "")}
                     {@const displayNote = isSimplifyNotesSelected
                       ? simplifyNoteName(rawNote)
                       : rawNote}
-                    <p class="separated-item text-body-muted">
+                    <p class="text-separated text-body-subtle">
                       {displayNote}
                     </p>
                   {/each}

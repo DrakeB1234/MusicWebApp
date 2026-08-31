@@ -14,13 +14,13 @@
 </script>
 
 <Button element="a" variant="text" class="item-button" {href} fullWidth>
-  <div class="lay-row lay-gap-16">
+  <div class="flex-row lay-gap-base">
     <div class="icon-container {color}">
       <Icon {icon} />
     </div>
-    <div class="item-button__text lay-col lay-gap-4">
+    <div class="item-button__text flex-col lay-gap-xsm">
       <p class="text-heading-3">{title}</p>
-      <p class="text-caption-muted">{description}</p>
+      <p class="text-caption-subtle">{description}</p>
     </div>
   </div>
 </Button>

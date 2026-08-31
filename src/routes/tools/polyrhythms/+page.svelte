@@ -90,12 +90,12 @@
     </section>
 
     <section class="inputs-card card space-above-base">
-      <div class="inputs-card__start lay-row lay-gap-24">
+      <div class="inputs-card__start flex-row lay-gap-lg">
         <Button size="icon-small" circle onclick={handlePlayPressed}>
           <Icon icon={player.isPlaying ? "stop" : "playArrow"} />
         </Button>
 
-        <div class="lay-row">
+        <div class="flex-row">
           <Label labelFor="bpm">BPM</Label>
           <Input
             id="bpm"
@@ -117,7 +117,7 @@
             <div class="track__name">
               <p>Track {idx + 1}</p>
             </div>
-            <div class="track__buttons lay-row space-above-base">
+            <div class="track__buttons flex-row space-above-base">
               <Button
                 variant="text"
                 size="icon-small"
@@ -135,8 +135,8 @@
               </Button>
             </div>
 
-            <div class="lay-row lay-gap-24 space-above-large">
-              <div class="lay-input-label-col">
+            <div class="flex-row lay-gap-lg space-above-lg">
+              <div class="flex-col__input-label">
                 <Label labelFor="beats-track-{idx}">Subdivision</Label>
                 <Input
                   id="beats-track-{idx}"
@@ -148,7 +148,7 @@
                   onchange={(e) => handleInputChanged(idx, e, "subdivisions")}
                 />
               </div>
-              <div class="lay-input-label-col">
+              <div class="flex-col__input-label">
                 <Label labelFor="color-track-{idx}">Color</Label>
                 <Select
                   id="color-track-{idx}"
@@ -162,7 +162,7 @@
                   onchange={(e) => handleInputChanged(idx, e, "color")}
                 />
               </div>
-              <div class="lay-input-label-col">
+              <div class="flex-col__input-label">
                 <Label labelFor="sound-track-{idx}">Sound</Label>
                 <Select
                   id="sound-track-{idx}"
@@ -224,6 +224,32 @@
   }
 
   :global {
+    :root {
+      [data-color="red"] {
+        --track-color: var(--color-bg-track-red);
+      }
+
+      [data-color="yellow"] {
+        --track-color: var(--color-bg-track-yellow);
+      }
+
+      [data-color="blue"] {
+        --track-color: var(--color-bg-track-blue);
+      }
+
+      [data-color="green"] {
+        --track-color: var(--color-bg-track-green);
+      }
+
+      [data-color="orange"] {
+        --track-color: var(--color-bg-track-orange);
+      }
+
+      [data-color="purple"] {
+        --track-color: var(--color-bg-track-purple);
+      }
+    }
+
     .btn.add-track-button {
       padding: var(--space-16);
       border-radius: 0;

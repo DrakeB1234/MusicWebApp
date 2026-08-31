@@ -6,17 +6,17 @@
 
 <div class="card">
   <div class="content">
-    <div class="lay-row">
+    <div class="flex-row">
       <Icon icon={DAW} color="var(--color-on-bg-primary)" />
 
       <h1 class="text-heading-2">Chord Progression Creator</h1>
     </div>
-    <p class="text-caption text-max-width-med space-above-base">
+    <p class="text-caption text-max-width-base space-above-base">
       Experiment with chords and choose between various styles to hear your
       progression in!
     </p>
 
-    <div class="space-above-large">
+    <div class="space-above-lg">
       <Button element="a" class="hero-button" href="/tools/chord-progression">
         Open Tool
         <Icon icon="arrowRightAlt" />

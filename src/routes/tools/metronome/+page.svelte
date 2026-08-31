@@ -15,8 +15,8 @@
   import Select from "$lib/components/UI/Select.svelte";
 
   let inputBpmAmount = $state(120);
-  let upBeatSound: PercussionSoundName = $state("woodblock_1");
-  let downBeatSound: PercussionSoundName = $state("woodblock_2");
+  let accentSound: PercussionSoundName = $state("woodblock_1");
+  let standardSound: PercussionSoundName = $state("woodblock_2");
 
   const MIN_BPM = 40;
   const MAX_BPM = 240;
@@ -65,7 +65,7 @@
 
     // Start with sound immediately
     currentBeatCount = 1;
-    sfxAudioService.play(upBeatSound);
+    sfxAudioService.play(accentSound);
 
     metrnomeInterval = setInterval(() => {
       currentBeatCount++;
@@ -73,9 +73,9 @@
       if (currentBeatCount > inputBeatCount) currentBeatCount = 1;
 
       if (currentBeatCount === 1) {
-        sfxAudioService.play(upBeatSound);
+        sfxAudioService.play(accentSound);
       } else {
-        sfxAudioService.play(downBeatSound);
+        sfxAudioService.play(standardSound);
       }
     }, intervalTime);
   }
@@ -109,12 +109,12 @@
   <main>
     <PageHeaderContainer headerText="Metronome" fallbackHref="/tools" />
     <section class="card">
-      <div class="bpm-container lay-grid-center space-above-large">
-        <h2 class="ui-xlarge">{inputBpmAmount}</h2>
-        <p class="text-body-muted">BPM</p>
+      <div class="bpm-container grid-center space-above-lg">
+        <h2 class="ui-xlg">{inputBpmAmount}</h2>
+        <p class="text-body-subtle">BPM</p>
       </div>
 
-      <div class="bpm-slider-container lay-row space-above-large">
+      <div class="bpm-slider-container flex-row space-above-lg">
         <Button
           variant="outlined"
           size="icon-small"
@@ -137,19 +137,19 @@
         >
       </div>
 
-      <div class="play-input-container lay-row lay-gap-16 space-above-large">
+      <div class="play-input-container flex-row lay-gap-base space-above-lg">
         <Button size="icon-base" circle onclick={handlePlayPressed}>
           <Icon icon={metrnomeInterval ? "stop" : "playArrow"} />
         </Button>
         <TapComponent onTap={handleInputChange} bind:inputBpmAmount />
       </div>
 
-      <hr class="space-above-xlarge" />
+      <hr class="space-above-xlg" />
 
-      <div class="input-container lay-grid-center">
-        <div class="lay-input-label-col space-above-large">
+      <div class="input-container grid-center">
+        <div class="flex-col__input-label space-above-lg">
           <Label>Time Signature</Label>
-          <div class="lay-row">
+          <div class="flex-row">
             <Select
               onchange={handleInputChange}
               bind:value={inputBeatCount}
@@ -173,19 +173,19 @@
           </div>
         </div>
 
-        <div class="lay-input-label-col space-above-base">
-          <Label>Upbeat Sound</Label>
+        <div class="flex-col__input-label space-above-base">
+          <Label>Accent Beat Sound</Label>
           <Select
             onchange={handleInputChange}
-            bind:value={upBeatSound}
+            bind:value={accentSound}
             options={SFX_PERCUSSION_OPTIONS}
           />
         </div>
-        <div class="lay-input-label-col space-above-base">
-          <Label>Downbeat Sound</Label>
+        <div class="flex-col__input-label space-above-base">
+          <Label>Standar Beat Sound</Label>
           <Select
             onchange={handleInputChange}
-            bind:value={downBeatSound}
+            bind:value={standardSound}
             options={SFX_PERCUSSION_OPTIONS}
           />
         </div>
@@ -222,8 +222,8 @@
     justify-content: center;
   }
 
-  .lay-input-label-col {
+  .flex-col__input-label {
     width: 100%;
-    max-width: 350px;
+    max-width: 300px;
   }
 </style>

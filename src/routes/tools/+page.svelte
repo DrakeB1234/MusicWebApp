@@ -17,7 +17,7 @@
       useHistory={false}
     />
 
-    <section class="card lay-col lay-gap-0 space-above-base">
+    <section class="card flex-col lay-gap-none space-above-base">
       {#each toolsData as data, i (data.urlName)}
         <IconDetailCardButton
           icon={data.icon}

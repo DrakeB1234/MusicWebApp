@@ -105,7 +105,7 @@
 </script>
 
 <section>
-  <div class="tabs lay-row lay-gap-4">
+  <div class="tabs flex-row lay-gap-xsm">
     <Button
       variant="text"
       class="tabs__button"
@@ -143,7 +143,7 @@
   <hr />
 
   <section
-    class="diatonic-palette lay-col space-above-base"
+    class="diatonic-palette flex-col space-above-base"
     class:hide={currentActiveTab !== "diatonic"}
   >
     <div class="diatnoic-palette__volume-toggle">
@@ -159,7 +159,7 @@
       </Button>
     </div>
     {#each diatonicChords as diatonicObj, i (diatonicObj.degree)}
-      <div class="diatonic-palette__section lay-row">
+      <div class="diatonic-palette__section flex-row">
         <p class="diatonic-palette__degree">{diatonicObj.degree}</p>
         {#each diatonicObj.chords as chord, j (chord)}
           {@const chordName = `${chord.tonic}${chord.symbol}`}
@@ -184,7 +184,7 @@
   </section>
 
   <section
-    class="diatonic-palette lay-col space-above-base"
+    class="diatonic-palette flex-col space-above-base"
     class:hide={currentActiveTab !== "secondary dom"}
   >
     <div class="diatnoic-palette__volume-toggle">
@@ -200,7 +200,7 @@
       </Button>
     </div>
     {#each secondaryDominants as secondaryDominantObj, i (secondaryDominantObj.degree)}
-      <div class="diatonic-palette__section lay-row">
+      <div class="diatonic-palette__section flex-row">
         <p class="diatonic-palette__degree">{secondaryDominantObj.degree}</p>
         {#each secondaryDominantObj.chords as chord, j (chord)}
           {@const chordName = `${chord.tonic}${chord.symbol}`}
@@ -225,7 +225,7 @@
   </section>
 
   <section
-    class="diatonic-palette lay-col space-above-base"
+    class="diatonic-palette flex-col space-above-base"
     class:hide={currentActiveTab !== "borrowed"}
   >
     <div class="diatnoic-palette__volume-toggle">
@@ -241,7 +241,7 @@
       </Button>
     </div>
     {#each borrowedChords as borrowedChordObj, i (borrowedChordObj.degree)}
-      <div class="diatonic-palette__section lay-row">
+      <div class="diatonic-palette__section flex-row">
         <p class="diatonic-palette__degree">{borrowedChordObj.degree}</p>
         {#each borrowedChordObj.chords as chord, j (chord)}
           {@const chordName = `${chord.tonic}${chord.symbol}`}
@@ -266,17 +266,17 @@
   </section>
 
   <section
-    class="lay-col space-above-base"
+    class="flex-col space-above-base"
     class:hide={currentActiveTab !== "custom"}
   >
     <RootNoteInput
       bind:noteValue={customRootNote}
       bind:accidentalValue={customRootAccidental}
     />
-    <div class="custom__chord-select space-above-small">
+    <div class="custom__chord-select space-above-sm">
       <Select bind:value={customRootSymbol} options={simpleChordSymbols} />
     </div>
-    <div class="custom__buttons lay-row lay-gap-16 space-above-base">
+    <div class="custom__buttons flex-row lay-gap-base space-above-base">
       <Button variant="secondary" fullWidth onclick={handleCustomChordPlay}
         >Play</Button
       >

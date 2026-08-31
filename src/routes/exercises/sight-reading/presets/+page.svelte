@@ -37,18 +37,20 @@
           class="preset-link__button"
           onclick={() => handlePresetClick(i)}
         >
-          <div class="preset-link lay-col lay-gap-0">
+          <div class="preset-link flex-col lay-gap-none">
             <p class="text-heading-3">{preset.name}</p>
-            <p class="text-caption-muted space-above-xsmall text-max-width-med">
+            <p class="text-caption-subtle space-above-xsm text-max-width-base">
               {preset.description}
             </p>
-            <div class="preset-link__pills lay-row lay-gap-4 space-above-base">
-              <p class="pill lay-row lay-gap-4">
-                <Icon icon="musicNote" size="var(--icon-size-small)" />
+            <div
+              class="preset-link__pills flex-row lay-gap-xsm space-above-base"
+            >
+              <p class="pill flex-row lay-gap-xsm">
+                <Icon icon="musicNote" size="var(--icon-size-sm)" />
                 {preset.config.noteRange.low} - {preset.config.noteRange.high}
               </p>
-              <p class="pill lay-row lay-gap-4">
-                <Icon icon="timer" size="var(--icon-size-small)" />
+              <p class="pill flex-row lay-gap-xsm">
+                <Icon icon="timer" size="var(--icon-size-sm)" />
                 {preset.config.timer}
               </p>
             </div>

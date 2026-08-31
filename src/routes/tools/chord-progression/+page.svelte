@@ -59,7 +59,7 @@
     <div class="action-bar-wrapper">
       <ActionBar playerRef={player} bind:currentScale />
     </div>
-    <div class="timeline-wrapper lay-grid-col space-above-large">
+    <div class="timeline-wrapper grid-col space-above-lg">
       <p>Timeline</p>
       <ProgressionTimeline playerRef={player} bind:activeProgressionObjIndex />
       <p class="current-chord-text">
@@ -67,7 +67,7 @@
           `Current Chord: ${player.currentPlayedChord}`}
       </p>
     </div>
-    <div class="chord-palette-wrapper space-above-xlarge lay-grid-col">
+    <div class="chord-palette-wrapper space-above-xlg grid-col">
       <p>Chord Palette</p>
       <ChordPalette
         playerRef={player}

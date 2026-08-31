@@ -99,20 +99,20 @@
           <h1>
             {chordObj.tonic + chordObj.symbol}
           </h1>
-          <p class="text-body-muted">{chordObj.name}</p>
+          <p class="text-body-subtle">{chordObj.name}</p>
         </div>
         <Button onclick={handlePlayChord} size="icon-small">
           <Icon icon="volumeUp" />
         </Button>
       </div>
 
-      <div class="aliases-container lay-row">
+      <div class="aliases-container flex-row">
         {#each chordAliases as alias (alias)}
           <p class="pill">{alias}</p>
         {/each}
       </div>
 
-      <div class="simple-toggle-container lay-row space-above-base">
+      <div class="simple-toggle-container flex-row space-above-base">
         <Label labelFor="simplify-notes">Simplify Notes</Label>
         <Toggle
           bind:toggled={isSimplifyNotesSelected}
@@ -123,7 +123,7 @@
 
       <hr class="divider space-above-base" />
 
-      <div class="note-buttons-container lay-row space-above-base">
+      <div class="note-buttons-container flex-row space-above-base">
         {#each chordObj.notes as note, index (note)}
           {@const rawNote = note.letter + (note.accidental ?? "")}
           {@const displayNote = isSimplifyNotesSelected
@@ -148,45 +148,45 @@
 
       <div class="card-high">
         <h3>Intervals</h3>
-        <div class="lay-row lay-gap-4">
+        <div class="flex-row lay-gap-xsm">
           {#each chordIntervals as interval (interval)}
-            <p class="separated-item text-body-muted">{interval}</p>
+            <p class="text-separated text-body-subtle">{interval}</p>
           {/each}
         </div>
         <h3 class="space-above-base">
-          Secondary Dominant <span class="text-body-muted"
+          Secondary Dominant <span class="text-body-subtle"
             >(perfect 5th above root)</span
           >
         </h3>
-        <p class="text-body-muted">
+        <p class="text-body-subtle">
           {secondaryDominantChord?.tonic}{secondaryDominantChord?.symbol}
         </p>
       </div>
 
       {#if isChordInversions}
         <h3 class="space-above-base">Inversions</h3>
-        <div class="lay-col space-above-xsmall">
+        <div class="flex-col space-above-xsm">
           {#each chordInversions as inversion, index (index)}
             <Button
               variant="outlined"
               state={currentInversionSelected === index ? "on" : "off"}
               onclick={() => handleInversionPressed(index)}
-              class="lay-row--start-justify"
+              class="lay-justify-start"
             >
-              <div class="inversion-button lay-row lay-gap-16">
+              <div class="inversion-button flex-row lay-gap-base">
                 <p class="inversion-pill pill primary">
                   {inversion.inversionName}
                 </p>
-                <div class="lay-col lay-col--start-justify lay-gap-0">
+                <div class="flex-col lay-align-start lay-gap-none">
                   <p>{inversion.chord.tonic + inversion.chord.symbol}</p>
-                  <div class="lay-row lay-gap-0">
+                  <div class="flex-row lay-gap-none">
                     {#each inversion.chord.notes as note}
                       {@const rawNote = note.letter + (note.accidental ?? "")}
                       {@const displayNote = isSimplifyNotesSelected
                         ? simplifyNoteName(rawNote)
                         : rawNote}
 
-                      <p class="separated-item text-body-muted">
+                      <p class="text-separated text-body-subtle">
                         {displayNote}&nbsp;
                       </p>
                     {/each}
@@ -202,7 +202,7 @@
     <section>
       <h3>Similar Chords</h3>
 
-      <hr class="space-above-small" />
+      <hr class="space-above-sm" />
 
       <div class="similar-chords-container">
         {#each similarChords as chord}
@@ -210,10 +210,10 @@
             element="a"
             variant="text"
             href={encodeUrlChord(chord.tonic!, chord.symbol)}
-            class="similar-chord-button lay-col lay-col--start-justify"
+            class="similar-chord-button flex-col lay-align-start"
           >
             <p>{chord.tonic + chord.symbol}</p>
-            <p class="text-body-muted">{chord.name}</p>
+            <p class="text-body-subtle">{chord.name}</p>
           </Button>
         {/each}
       </div>

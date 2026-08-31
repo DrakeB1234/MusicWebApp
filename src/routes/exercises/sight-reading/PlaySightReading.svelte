@@ -74,7 +74,7 @@
   <div>
     <MidiDeviceConnect />
   </div>
-  <div class="input lay-row space-above-base">
+  <div class="input flex-row space-above-base">
     <Button
       variant="outlined"
       size="large"
@@ -88,7 +88,7 @@
       onclick={() => handleAccidentalInput("b")}>b</Button
     >
   </div>
-  <div class="input lay-row space-above-small">
+  <div class="input flex-row space-above-sm">
     {#each naturalNoteNames as note}
       <Button variant="outlined" size="large" onclick={() => handleInput(note)}
         >{note}</Button
@@ -99,10 +99,10 @@
 
 {#snippet gameContainer()}
   <div
-    class="start-container lay-grid-center"
+    class="start-container grid-center"
     class:hide={controller.status !== "idle"}
   >
-    <Button class="space-above-large" onclick={() => controller.start()}
+    <Button class="space-above-lg" onclick={() => controller.start()}
       >Start</Button
     >
   </div>

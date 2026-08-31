@@ -32,17 +32,17 @@
         bind:accidentalValue={inputAccidental}
       />
 
-      <div class="scales-container lay-col space-above-large">
+      <div class="scales-container flex-col space-above-lg">
         {#each scales as scale (scale)}
           <Button
             element="a"
             variant="outlined"
             href={encodeUrlScale(fullNote, scale)}
-            class="lay-row--start-justify"
+            class="lay-justify-start"
           >
-            <div class="scale-button lay-col lay-gap-0">
+            <div class="scale-button flex-col lay-gap-none">
               <p>{fullNote}&nbsp;{scale}</p>
-              <p class="text-body-muted">{scale}</p>
+              <p class="text-body-subtle">{scale}</p>
             </div>
           </Button>
         {/each}
