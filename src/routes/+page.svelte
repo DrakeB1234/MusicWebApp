@@ -4,13 +4,15 @@
   import ToolCard from "$lib/components/Cards/ToolCard.svelte";
   import Wrapper from "$lib/components/Wrapper.svelte";
   import { exercisesData, toolsData } from "$lib/data/appData";
+  import { lastUsedService } from "$lib/data/lastUsedService.svelte";
 
-  const lastUsedItems = [
-    exercisesData[0],
-    toolsData[0],
-    toolsData[1],
-    exercisesData[1],
-  ];
+  const allItems = [...exercisesData, ...toolsData];
+
+  const lastUsedItems = $derived(
+    lastUsedService.lastUsedIdsList
+      .map((e) => allItems.find((item) => item.href === e))
+      .filter((item) => item !== undefined),
+  );
 </script>
 
 <svelte:head>
@@ -37,7 +39,7 @@
       </div>
     </section>
 
-    <hr class="space-above-base" />
+    <hr class="space-above-xlg" />
 
     <section class="space-above-lg">
       <h3>Exercises</h3>
@@ -80,6 +82,7 @@
   }
 
   .last-used {
+    align-items: stretch;
     padding-bottom: var(--space-8);
     overflow-x: auto;
   }

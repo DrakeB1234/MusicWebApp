@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { pianoAudioService } from "$lib/audio/pianoAudioService.svelte";
   import {
     getBorrowedChordsFromScale,
     getChordAbsoulteOctave,
@@ -13,8 +12,11 @@
   import ProgressionTimeline from "./ProgressionTimeline.svelte";
   import ChordPalette from "./ChordPalette.svelte";
   import TimelineSidebar from "./TimelineSidebar.svelte";
+  import { lastUsedService } from "$lib/data/lastUsedService.svelte";
+  import { page } from "$app/state";
 
   const player = new ProgressionPlayer();
+  const initialMasterVolume = Howler.volume() * 100;
 
   let currentScale = $state("major");
   let diatonicChords = $derived(
@@ -40,10 +42,14 @@
 
     // Init progression with chords that MATCH key arg
     player.initPlayer(startingStyle, "C", startingProgression);
+
+    // Save url for last used data
+    lastUsedService.addLastUsed(page.url.pathname);
   });
 
   onDestroy(() => {
-    Howler.stop();
+    player.stop();
+    Howler.volume(initialMasterVolume / 100);
   });
 </script>
 

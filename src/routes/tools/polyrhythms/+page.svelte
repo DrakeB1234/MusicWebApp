@@ -17,6 +17,8 @@
   import { onMount } from "svelte";
   import Select from "$lib/components/UI/Select.svelte";
   import PolyrhythmDisplay from "./PolyrhythmDisplay.svelte";
+  import { lastUsedService } from "$lib/data/lastUsedService.svelte";
+  import { page } from "$app/state";
 
   const player = new PolyrhythmPlayer();
 
@@ -68,6 +70,9 @@
 
   onMount(() => {
     player.init();
+
+    // Save url for last used data
+    lastUsedService.addLastUsed(page.url.pathname);
 
     return () => {
       Howler.stop();

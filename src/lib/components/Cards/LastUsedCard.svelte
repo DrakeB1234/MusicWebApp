@@ -32,8 +32,8 @@
 
 <style>
   .flex-col {
-    min-width: 200px;
-    justify-content: start;
+    flex: 0 0 220px;
+    margin-bottom: auto;
   }
 
   .icon-container {

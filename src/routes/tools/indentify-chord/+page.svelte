@@ -1,9 +1,11 @@
 <script lang="ts">
+  import { page } from "$app/state";
   import { pianoAudioService } from "$lib/audio/pianoAudioService.svelte";
   import PageHeaderContainer from "$lib/components/PageHeaderContainer.svelte";
   import PianoInteractive from "$lib/components/Piano/PianoInteractive.svelte";
   import Button from "$lib/components/UI/Button.svelte";
   import Wrapper from "$lib/components/Wrapper.svelte";
+  import { lastUsedService } from "$lib/data/lastUsedService.svelte";
   import { encodeUrlChord } from "$lib/helpers/helpers";
   import {
     convertMidiToNoteName,
@@ -31,6 +33,11 @@
       selectedNotes = sortNoteNames(selectedNotes);
     }
   }
+
+  onMount(() => {
+    // Save url for last used data
+    lastUsedService.addLastUsed(page.url.pathname);
+  });
 
   onDestroy(() => {
     Howler.stop();

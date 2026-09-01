@@ -8,7 +8,9 @@
   import Label from "$lib/components/UI/Label.svelte";
   import Select from "$lib/components/UI/Select.svelte";
   import Wrapper from "$lib/components/Wrapper.svelte";
+  import { lastUsedService } from "$lib/data/lastUsedService.svelte";
   import { convertNoteNameToMidi } from "$lib/helpers/musicTheory";
+  import { onMount } from "svelte";
   import {
     defaultConfig,
     StaffTypeNoteRanges,
@@ -17,6 +19,7 @@
     type NoteRange,
   } from "./helpers";
   import NoteRangeModal from "./NoteRangeModal.svelte";
+  import { page } from "$app/state";
 
   let configOptions: ConfigOptions = $state(defaultConfig);
   let currentStaffTypeNoteRange = $derived(
@@ -79,6 +82,11 @@
       },
     });
   }
+
+  onMount(() => {
+    // Save url for last used data
+    lastUsedService.addLastUsed(page.url.pathname);
+  });
 </script>
 
 <svelte:head>

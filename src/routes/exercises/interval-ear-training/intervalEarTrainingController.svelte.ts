@@ -130,7 +130,7 @@ export class IntervalEarTrainingController {
   private playInterval() {
     if (!this.currentQuestion) return;
 
-    pianoAudioService.stopAll();
+    Howler.stop();
     if (this.intervalAudioTimer) {
       clearTimeout(this.intervalAudioTimer);
       this.intervalAudioTimer = null;
@@ -152,7 +152,7 @@ export class IntervalEarTrainingController {
   private playRequestedInterval(interval: string) {
     if (!this.currentQuestion) return;
 
-    pianoAudioService.stopAll();
+    Howler.stop();
     if (this.intervalAudioTimer) {
       clearTimeout(this.intervalAudioTimer);
       this.intervalAudioTimer = null;

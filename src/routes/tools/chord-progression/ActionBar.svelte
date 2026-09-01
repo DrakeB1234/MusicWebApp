@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { pianoAudioService } from "$lib/audio/pianoAudioService.svelte";
   import Icon from "$lib/components/Icons/Icon.svelte";
   import PianoMiniRoll from "$lib/components/Piano/PianoMiniRoll.svelte";
   import Button from "$lib/components/UI/Button.svelte";
@@ -32,8 +31,10 @@
   let popoverStyleRef = $state<HTMLElement>();
   let popoverKeyRef = $state<HTMLElement>();
 
+  let localMasterVolume = $state(Howler.volume() * 100);
+
   let localStyleId = $state(playerRef.currentStyleData.id);
-  let localVolumeValue = $state(pianoAudioService.volumeValue);
+  let localVolumeValue = $state(localMasterVolume);
   let localBPMValue = $state(playerRef.bpm);
   let localKeyValue = $state(playerRef.globalKey);
   let localScaleValue = $state(currentScale);
@@ -44,8 +45,9 @@
 
   function handleVolumeChanged() {
     if (isNaN(localVolumeValue)) return;
-    pianoAudioService.changeServiceVolume(localVolumeValue);
-    localVolumeValue = pianoAudioService.volumeValue;
+    const fixedValue = Math.max(0, Math.min(100, localVolumeValue));
+    Howler.volume(fixedValue / 100);
+    localMasterVolume = fixedValue;
   }
 
   function handleAutoVoicingToggled() {
@@ -128,7 +130,7 @@
   >
     <div class="flex-col__input-label lay-gap-none">
       <p class="text-body-subtle">Volume</p>
-      <p class="text-heading-3">{pianoAudioService.volumeValue}</p>
+      <p class="text-heading-3">{localMasterVolume}</p>
     </div>
   </Button>
   <Popover id="popover-volume">

@@ -29,16 +29,23 @@
 
     if (type === "master") {
       userPreferencesService.setMasterVolume(value);
-      Howler.volume(userPreferencesService.masterVolume);
+      Howler.volume(userPreferencesService.masterVolume / 100);
     }
     if (type === "piano") {
       userPreferencesService.setPianoVolume(value);
-      pianoAudioService.changeVolume(value);
+      pianoAudioService.changeVolume(userPreferencesService.pianoVolume);
     }
     if (type === "sfx") {
       userPreferencesService.setSfxVolume(value);
-      sfxAudioService.changeVolume(value);
+      sfxAudioService.changeVolume(userPreferencesService.sfxVolume);
     }
+  }
+
+  function resetVolume() {
+    userPreferencesService.resetVolumeDefault();
+    Howler.volume(userPreferencesService.masterVolume / 100);
+    pianoAudioService.changeVolume(userPreferencesService.pianoVolume);
+    sfxAudioService.changeVolume(userPreferencesService.sfxVolume);
   }
 </script>
 
@@ -97,10 +104,7 @@
         </div>
       </div>
 
-      <Button
-        variant="outlined"
-        class="space-above-xlg"
-        onclick={() => userPreferencesService.resetVolumeDefault()}
+      <Button variant="outlined" class="space-above-xlg" onclick={resetVolume}
         >Reset Volume</Button
       >
     </section>

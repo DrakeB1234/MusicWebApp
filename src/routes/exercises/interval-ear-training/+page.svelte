@@ -9,6 +9,9 @@
   import { defaultConfig } from "./intervalEarTrainingHelpers";
   import ConfigModalCard from "./ConfigModalCard.svelte";
   import IconDetailCardButton from "$lib/components/Cards/IconDetailCardButton.svelte";
+  import { onMount } from "svelte";
+  import { lastUsedService } from "$lib/data/lastUsedService.svelte";
+  import { page } from "$app/state";
 
   let configOptions = $state(defaultConfig);
   let activeIntervalStrings: string[] = $derived(
@@ -57,6 +60,11 @@
       },
     });
   }
+
+  onMount(() => {
+    // Save url for last used data
+    lastUsedService.addLastUsed(page.url.pathname);
+  });
 </script>
 
 <svelte:head>

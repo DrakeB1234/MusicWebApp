@@ -13,6 +13,8 @@
   import TapComponent from "./TapComponent.svelte";
   import Label from "$lib/components/UI/Label.svelte";
   import Select from "$lib/components/UI/Select.svelte";
+  import { lastUsedService } from "$lib/data/lastUsedService.svelte";
+  import { page } from "$app/state";
 
   let inputBpmAmount = $state(120);
   let accentSound: PercussionSoundName = $state("woodblock_1");
@@ -90,6 +92,11 @@
 
     Howler.stop();
   }
+
+  onMount(() => {
+    // Save url for last used data
+    lastUsedService.addLastUsed(page.url.pathname);
+  });
 
   onDestroy(() => {
     Howler.stop();

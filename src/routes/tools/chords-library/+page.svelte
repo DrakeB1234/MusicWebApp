@@ -6,6 +6,9 @@
   import RootNoteInput from "$lib/components/RootNoteInput.svelte";
   import { encodeUrlChord } from "$lib/helpers/helpers";
   import PageHeaderContainer from "$lib/components/PageHeaderContainer.svelte";
+  import { onMount } from "svelte";
+  import { lastUsedService } from "$lib/data/lastUsedService.svelte";
+  import { page } from "$app/state";
 
   let inputNote = $state("C");
   let inputAccidental = $state("n");
@@ -19,6 +22,11 @@
   function handleChordCategoryButtonPressed(category: string) {
     inputChordCategory = category;
   }
+
+  onMount(() => {
+    // Save url for last used data
+    lastUsedService.addLastUsed(page.url.pathname);
+  });
 </script>
 
 <svelte:head>

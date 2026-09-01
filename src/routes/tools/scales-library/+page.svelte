@@ -1,10 +1,13 @@
 <script lang="ts">
+  import { page } from "$app/state";
   import PageHeaderContainer from "$lib/components/PageHeaderContainer.svelte";
   import RootNoteInput from "$lib/components/RootNoteInput.svelte";
   import Button from "$lib/components/UI/Button.svelte";
   import Wrapper from "$lib/components/Wrapper.svelte";
+  import { lastUsedService } from "$lib/data/lastUsedService.svelte";
   import { encodeUrlScale } from "$lib/helpers/helpers";
   import { getAllModes } from "$lib/helpers/musicTheory";
+  import { onMount } from "svelte";
 
   let scales = getAllModes();
   let inputNote = $state("C");
@@ -12,6 +15,11 @@
   let fullNote = $derived(
     inputNote + (inputAccidental === "n" ? "" : inputAccidental),
   );
+
+  onMount(() => {
+    // Save url for last used data
+    lastUsedService.addLastUsed(page.url.pathname);
+  });
 </script>
 
 <svelte:head>
@@ -20,11 +28,7 @@
 
 <Wrapper>
   <main>
-    <PageHeaderContainer
-      subText="Tools"
-      headerText="Scales Library"
-      fallbackHref="/"
-    />
+    <PageHeaderContainer headerText="Scales Library" fallbackHref="/" />
 
     <section class="card">
       <RootNoteInput

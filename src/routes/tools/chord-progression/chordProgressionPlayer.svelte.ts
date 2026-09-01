@@ -352,7 +352,7 @@ export class ProgressionPlayer {
     this.isPlaying = false;
     if (this.timerID) clearTimeout(this.timerID);
     this.resetPlaybackPosition();
-    pianoAudioService.stopAll();
+    Howler.stop();
   }
 
   togglePlay = () => {
