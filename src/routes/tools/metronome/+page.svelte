@@ -88,15 +88,11 @@
     metrnomeInterval = null;
     currentBeatCount = 0;
 
-    sfxAudioService.stopAll();
+    Howler.stop();
   }
 
-  onMount(() => {
-    sfxAudioService.init();
-  });
-
   onDestroy(() => {
-    sfxAudioService.stopAll();
+    Howler.stop();
     stopMetronome();
   });
 </script>

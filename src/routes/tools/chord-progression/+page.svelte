@@ -29,8 +29,6 @@
   let activeProgressionObjIndex = $state<number | null>(null);
 
   onMount(() => {
-    pianoAudioService.init();
-
     const startingProgression = [
       { chordInfo: getChordAbsoulteOctave("D", "m7"), beats: 4 },
       { chordInfo: getChordAbsoulteOctave("G", "7"), beats: 4 },
@@ -45,8 +43,7 @@
   });
 
   onDestroy(() => {
-    player.stop();
-    pianoAudioService.resetVolumeToDefault();
+    Howler.stop();
   });
 </script>
 

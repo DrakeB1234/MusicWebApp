@@ -134,7 +134,7 @@ export class PolyrhythmPlayer {
     this.isPlaying = false;
     if (this.timerID) clearTimeout(this.timerID);
     this.resetPlaybackPositions();
-    sfxAudioService.stopAll();
+    Howler.stop();
   }
 
   togglePlay = () => {

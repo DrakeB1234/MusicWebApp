@@ -4,8 +4,6 @@
   import { onDestroy, onMount } from "svelte";
   import { IntervalEarTrainingController } from "./intervalEarTrainingController.svelte";
   import type { IntervalEarConfig } from "./intervalEarTrainingHelpers";
-  import { pianoAudioService } from "$lib/audio/pianoAudioService.svelte";
-  import { sfxAudioService } from "$lib/audio/sfxAudioService.svelte";
   import Icon from "$lib/components/Icons/Icon.svelte";
   import ConfirmationModalCard from "$lib/components/Modal/ConfirmationModalCard.svelte";
   import ExerciseLayout from "$lib/components/Exercises/ExerciseLayout.svelte";
@@ -39,15 +37,11 @@
   }
 
   onMount(() => {
-    pianoAudioService.init();
-    sfxAudioService.init();
-
     if (staffElement) exerciseController.setupVectorScoreStaff(staffElement);
   });
 
   onDestroy(() => {
-    pianoAudioService.stopAll();
-    sfxAudioService.stopAll();
+    Howler.stop();
     exerciseController.destroy();
   });
 </script>

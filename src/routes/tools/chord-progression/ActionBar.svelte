@@ -44,7 +44,7 @@
 
   function handleVolumeChanged() {
     if (isNaN(localVolumeValue)) return;
-    pianoAudioService.changeVolume(localVolumeValue);
+    pianoAudioService.changeServiceVolume(localVolumeValue);
     localVolumeValue = pianoAudioService.volumeValue;
   }
 

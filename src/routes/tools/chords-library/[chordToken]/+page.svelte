@@ -69,12 +69,8 @@
     pianoSnapshotNotes = noteFullNames;
   }
 
-  onMount(() => {
-    pianoAudioService.init();
-  });
-
   onDestroy(() => {
-    pianoAudioService.stopAll();
+    Howler.stop();
   });
 
   $effect(() => {

@@ -42,10 +42,6 @@
   }
 
   onMount(() => {
-    pianoAudioService.init();
-    sfxAudioService.init();
-    midiService.init();
-
     if (staffElement) controller.setupVectorScoreStaff(staffElement);
 
     const unsubscribe = midiService.subscribe((msg) => {
@@ -57,9 +53,8 @@
 
     return () => {
       unsubscribe();
-      pianoAudioService.stopAll();
-      sfxAudioService.stopAll();
       controller.destroy();
+      Howler.stop();
     };
   });
 </script>

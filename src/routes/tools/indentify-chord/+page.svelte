@@ -32,14 +32,8 @@
     }
   }
 
-  // Svelte Methods
-
-  onMount(() => {
-    pianoAudioService.init();
-  });
-
   onDestroy(() => {
-    pianoAudioService.stopAll();
+    Howler.stop();
   });
 </script>
 

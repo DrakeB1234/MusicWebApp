@@ -1,3 +1,4 @@
+import { userPreferencesService } from '$lib/data/userPreferencesService.svelte';
 import { Howl } from 'howler';
 
 export const MIN_BPM = 40;
@@ -41,7 +42,6 @@ export const SFX_PERCUSSION_OPTIONS = Object.entries(percussionLabelBySoundName)
 class SfxAudioService {
   isReady = $state(false);
 
-  private volume = 1;
   private sound: Howl | null = null;
 
   init() {
@@ -50,28 +50,26 @@ class SfxAudioService {
     this.sound = new Howl({
       src: ['/audio/SFXSprite.mp3'],
       sprite: SFX_MAP,
-      volume: this.volume,
+      volume: userPreferencesService.sfxVolume / 100,
       onload: () => {
         this.isReady = true;
       }
     });
   }
 
+  get volumeValue(): number {
+    return userPreferencesService.pianoVolume;
+  }
+
+  changeVolume(value: number) {
+    const newValue = Math.max(0, Math.min(100, value));
+    this.sound?.volume(newValue / 100);
+  }
+
   play(id: SfxSoundName) {
     if (!this.sound) return;
 
     this.sound.play(id);
-  }
-
-  setVolume(val: number) {
-    this.volume = val;
-    if (this.sound) {
-      this.sound.volume(val);
-    }
-  }
-
-  stopAll = () => {
-    Howler.stop();
   }
 }
 

@@ -1,5 +1,6 @@
 import { browser } from "$app/environment";
 import { intervalObjs } from "$lib/helpers/musicTheoryConstants";
+import { readStorage, removeStorage, writeStorage } from "./storage";
 
 export type IntervalEarTrainingStats = {
   [interval: string]: { correct: number; wrong: number };
@@ -12,48 +13,34 @@ export const statsDataService = {
   getStats(): IntervalEarTrainingStats {
     if (!browser) return {};
 
-    try {
-      const existingData = localStorage.getItem(STATS_STORAGE_KEY);
-      const rawStats = existingData ? JSON.parse(existingData) : {};
-      const orderedStats: IntervalEarTrainingStats = {};
+    const rawStats = readStorage<IntervalEarTrainingStats>(STATS_STORAGE_KEY, {});
+    const orderedStats: IntervalEarTrainingStats = {};
 
-      for (const intervalObj of intervalObjs) {
-        const key = intervalObj.interval;
-        if (rawStats[key]) {
-          orderedStats[key] = rawStats[key];
-        }
+    for (const intervalObj of intervalObjs) {
+      const key = intervalObj.interval;
+      if (rawStats[key]) {
+        orderedStats[key] = rawStats[key];
       }
-
-      return orderedStats;
-    } catch (error) {
-      console.error("Failed to parse interval stats:", error);
-      return {};
     }
+
+    return orderedStats;
   },
 
   saveSessionStats(sessionStats: IntervalEarTrainingStats) {
-    try {
-      const allStats = this.getStats();
+    const allStats = this.getStats();
 
-      for (const [interval, stats] of Object.entries(sessionStats)) {
-        if (!allStats[interval]) {
-          allStats[interval] = { correct: 0, wrong: 0 };
-        }
-        allStats[interval].correct += stats.correct;
-        allStats[interval].wrong += stats.wrong;
+    for (const [interval, stats] of Object.entries(sessionStats)) {
+      if (!allStats[interval]) {
+        allStats[interval] = { correct: 0, wrong: 0 };
       }
-
-      localStorage.setItem(STATS_STORAGE_KEY, JSON.stringify(allStats));
-    } catch (error) {
-      console.error("Failed to save interval stats:", error);
+      allStats[interval].correct += stats.correct;
+      allStats[interval].wrong += stats.wrong;
     }
+
+    writeStorage(STATS_STORAGE_KEY, allStats);
   },
 
   resetSessionStats() {
-    try {
-      localStorage.removeItem(STATS_STORAGE_KEY);
-    } catch (error) {
-      console.error("Failed to reset stats data:", error);
-    }
+    removeStorage(STATS_STORAGE_KEY);
   }
 };

@@ -67,11 +67,10 @@
   }
 
   onMount(() => {
-    sfxAudioService.init();
     player.init();
 
     return () => {
-      sfxAudioService.stopAll();
+      Howler.stop();
       player.stop();
     };
   });

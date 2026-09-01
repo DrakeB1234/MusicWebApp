@@ -1,20 +1,9 @@
 <script>
-  import { browser } from "$app/env";
   import { onNavigate } from "$app/navigation";
   import Icon from "./Icons/Icon.svelte";
   import Button from "./UI/Button.svelte";
 
   let mobileMenuOpen = $state(false);
-
-  let isDarkMode = $state(
-    browser ? document.documentElement.classList.contains("dark") : false,
-  );
-
-  function handleToggleLightMode() {
-    isDarkMode = !isDarkMode;
-    localStorage.setItem("theme", isDarkMode ? "dark" : "light");
-    document.documentElement.classList.toggle("dark", isDarkMode);
-  }
 
   function toggleMobileMenu() {
     mobileMenuOpen = !mobileMenuOpen;
@@ -40,13 +29,7 @@
     <a href="/exercises" class="link">Exercises</a>
     <a href="/tools" class="link">Tools</a>
     <a href="/about" class="link">About</a>
-    <a href="/" class="link">Settings</a>
-  </div>
-
-  <div class="desktop-header__links flex-row">
-    <Button variant="text" class="link" onclick={handleToggleLightMode}
-      ><Icon icon={isDarkMode ? "lightMode" : "darkMode"} /></Button
-    >
+    <a href="/settings" class="link">Settings</a>
   </div>
 </div>
 
@@ -110,7 +93,7 @@
       <Icon icon="about" />
       <p>About</p>
     </a>
-    <a href="/" class="link link--sidebar">
+    <a href="/settings" class="link link--sidebar">
       <Icon icon="settings" />
       <p>Settings</p>
     </a>
@@ -135,10 +118,6 @@
     background-color: var(--color-border-subtle);
     width: 1px;
     height: calc(48px + var(--space-8));
-  }
-
-  .desktop-header__links:last-child {
-    margin-left: auto;
   }
 
   .mobile-header {

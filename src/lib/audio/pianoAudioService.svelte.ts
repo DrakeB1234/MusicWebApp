@@ -1,4 +1,5 @@
-import { convertNoteNameToMidi, convertNoteNameToObj, getFullNoteNameFromObj } from '$lib/helpers/musicTheory';
+import { userPreferencesService } from '$lib/data/userPreferencesService.svelte';
+import { convertNoteNameToMidi, getFullNoteNameFromObj } from '$lib/helpers/musicTheory';
 import type { GeneralNote } from '$lib/helpers/musicTheoryTypes';
 import { Howl, Howler } from 'howler';
 
@@ -48,23 +49,18 @@ class PianoAudioService {
   private sound: Howl | null = null;
   private isReady = $state(false);
   private isLoading = $state(false);
-  private isMuted = $state(false);
-
-  private INITIAL_VOLUME = 0.7;
-  private volume: number = $state(0.7);
 
   error = $state<string | null>(null);
 
   async init() {
     if (this.sound || this.isLoading) return;
-
     this.isLoading = true;
-    Howler.volume(this.volume);
 
     return new Promise<void>((resolve, reject) => {
       this.sound = new Howl({
         src: ['/audio/PianoSprite.mp3'],
         sprite: SPRITE_MAP,
+        volume: userPreferencesService.pianoVolume / 100,
         onload: () => {
           this.isReady = true;
           this.isLoading = false;
@@ -97,19 +93,12 @@ class PianoAudioService {
   }
 
   get volumeValue(): number {
-    return Math.round(this.volume * 100);
-  };
-
-  changeVolume(newValue: number) {
-    const fixedValue = Math.max(0, Math.min(100, newValue));
-
-    this.volume = fixedValue / 100;
-
-    Howler.volume(this.volume);
+    return userPreferencesService.pianoVolume;
   }
 
-  resetVolumeToDefault() {
-    this.changeVolume(this.INITIAL_VOLUME * 100);
+  changeVolume(value: number) {
+    const newValue = Math.max(0, Math.min(100, value));
+    this.sound?.volume(newValue / 100);
   }
 
   playNote(note: GeneralNote, sustainType: sustainFadeMsTypes = "high") {
@@ -150,20 +139,6 @@ class PianoAudioService {
     notes.forEach(note => {
       this.playNote(note, sustainType);
     });
-  }
-
-  muteSounds = () => {
-    Howler.mute(true);
-    this.isMuted = true;
-  }
-
-  unMuteSounds = () => {
-    Howler.mute(false);
-    this.isMuted = false;
-  }
-
-  stopAll = () => {
-    Howler.stop();
   }
 }
 

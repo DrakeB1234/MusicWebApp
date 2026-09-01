@@ -68,15 +68,9 @@
     }, playScaleDelayMs);
   }
 
-  // Svelte Methods
-
-  onMount(() => {
-    pianoAudioService.init();
-  });
-
   onDestroy(() => {
     resetPlayScaleInterval();
-    pianoAudioService.stopAll();
+    Howler.stop();
   });
 </script>
 
