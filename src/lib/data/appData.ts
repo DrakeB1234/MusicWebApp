@@ -1,7 +1,6 @@
 import type { IconType } from "$lib/components/Icons/Icon.svelte";
 import DAW from "$lib/components/Icons/DAW.svelte";
 import Metronome from "$lib/components/Icons/Metronome.svelte";
-import Scale from "$lib/components/Icons/Scale.svelte";
 import Polyrhythm from "$lib/components/Icons/Polyrhythm.svelte";
 
 interface DataEntry {
@@ -27,7 +26,7 @@ export const exercisesData: DataEntry[] = [
     description: "Improve your ear training with either custom or guided interval training exercises!",
     href: "/exercises/interval-ear-training",
     urlName: "interval-ear-training",
-    color: "violet",
+    color: "green",
     icon: "book"
   },
   {
@@ -54,7 +53,7 @@ export const toolsData: DataEntry[] = [
     description: "Easy to use and simple metronome to use for many musical applications!",
     href: "/tools/metronome",
     urlName: "metronome",
-    color: "purple",
+    color: "violet",
     icon: Metronome
   },
   {
@@ -62,7 +61,7 @@ export const toolsData: DataEntry[] = [
     description: "In depth and deeply customizable polyrhythm creator with many options and customization available!",
     href: "/tools/polyrhythms",
     urlName: "polyrhythms",
-    color: "purple",
+    color: "violet",
     icon: Polyrhythm
   },
   {
@@ -78,7 +77,7 @@ export const toolsData: DataEntry[] = [
     description: "Search any chord and play them in app, or lookup how to play it on your instrument.",
     href: "/tools/chords-library",
     urlName: "chords-library",
-    color: "blue",
+    color: "violet",
     icon: "dictionary"
   },
   {
@@ -86,7 +85,7 @@ export const toolsData: DataEntry[] = [
     description: "Find the notes and diatonic chords in any scale.",
     href: "/tools/scales-library",
     urlName: "scales-library",
-    color: "green",
+    color: "violet",
     icon: "stacks"
   },
   {
@@ -94,7 +93,7 @@ export const toolsData: DataEntry[] = [
     description: "Create and save chord progressions for practicing or writing music.",
     href: "/tools/chord-progression",
     urlName: "chord-progression",
-    color: "purple",
+    color: "violet",
     icon: DAW,
   },
 ]

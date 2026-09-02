@@ -2,9 +2,8 @@
   import { pianoAudioService } from "$lib/audio/pianoAudioService.svelte";
   import Button from "$lib/components/UI/Button.svelte";
   import Wrapper from "$lib/components/Wrapper.svelte";
-  import { onDestroy, onMount } from "svelte";
+  import { onDestroy } from "svelte";
   import type { PageProps } from "./$types";
-  import PianoSnapshot from "$lib/components/Piano/PianoSnapshot.svelte";
   import Icon from "$lib/components/Icons/Icon.svelte";
   import PageHeaderContainer from "$lib/components/PageHeaderContainer.svelte";
   import {
@@ -14,6 +13,7 @@
   import Toggle from "$lib/components/UI/Toggle.svelte";
   import Label from "$lib/components/UI/Label.svelte";
   import { encodeUrlChord } from "$lib/helpers/helpers";
+  import PianoRoll from "$lib/components/Piano/PianoRoll.svelte";
 
   // Constants
 
@@ -102,7 +102,7 @@
         </Button>
       </div>
 
-      <div class="aliases-container flex-row">
+      <div class="aliases-container flex-row space-above-sm">
         {#each chordAliases as alias (alias)}
           <p class="pill">{alias}</p>
         {/each}
@@ -119,7 +119,8 @@
 
       <hr class="divider space-above-base" />
 
-      <div class="note-buttons-container flex-row space-above-base">
+      <p class="text-caption space-above-base">Notes:</p>
+      <div class="note-buttons-container flex-row space-above-sm">
         {#each chordObj.notes as note, index (note)}
           {@const rawNote = note.letter + (note.accidental ?? "")}
           {@const displayNote = isSimplifyNotesSelected
@@ -133,12 +134,13 @@
       </div>
 
       <div class="piano-roll-container">
-        <PianoSnapshot
+        <PianoRoll
           activeNotes={pianoSnapshotNotes}
           range={{
             startNote: "C4",
             endNote: "C7",
           }}
+          overflowScroll
         />
       </div>
 
@@ -195,7 +197,7 @@
       {/if}
     </section>
 
-    <section>
+    <section class="space-above-lg">
       <h3>Similar Chords</h3>
 
       <hr class="space-above-sm" />
@@ -245,13 +247,12 @@
   }
 
   .piano-roll-container {
-    overflow-x: auto;
-
     /* Full Bleed, Negative margin */
     margin-left: calc(-1 * var(--space-16));
     margin-right: calc(-1 * var(--space-16));
 
     margin-block: var(--space-24);
+    border-bottom: 3px solid var(--color-border);
   }
 
   .simple-toggle-container {

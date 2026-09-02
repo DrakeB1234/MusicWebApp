@@ -1,5 +1,6 @@
 <script>
   import { onNavigate } from "$app/navigation";
+  import { exercisesData, toolsData } from "$lib/data/appData";
   import Icon from "./Icons/Icon.svelte";
   import Button from "./UI/Button.svelte";
 
@@ -15,7 +16,7 @@
 </script>
 
 <div class="desktop-header flex-row">
-  <a href="/" class="link flex-row">
+  <a href="/" class="desktop-header__logo link flex-row lay-gap-base">
     <img
       src="/icon-192x192.webp"
       alt="Tone Tools Logo"
@@ -73,21 +74,6 @@
     </Button>
   </div>
 
-  <hr class="space-above-sm" />
-
-  <div class="mobile-sidebar__links flex-col lay-gap-xsm">
-    <a href="/exercises" class="link link--sidebar">
-      <Icon icon="ear" />
-      <p>Exercises</p>
-    </a>
-    <a href="/tools" class="link link--sidebar">
-      <Icon icon="dictionary" />
-      <p>Tools</p>
-    </a>
-  </div>
-
-  <hr class="space-above-base" />
-
   <div class="mobile-sidebar__links flex-col">
     <a href="/about" class="link link--sidebar">
       <Icon icon="about" />
@@ -96,6 +82,36 @@
     <a href="/settings" class="link link--sidebar">
       <Icon icon="settings" />
       <p>Settings</p>
+    </a>
+  </div>
+
+  <hr class="space-above-base" />
+
+  <div class="mobile-sidebar__links flex-col lay-gap-xsm">
+    {#each exercisesData as item}
+      <a href={item.href} class="link link--sidebar">
+        <Icon icon={item.icon} />
+        <p>{item.name}</p>
+      </a>
+    {/each}
+    <a href="/tools" class="link link--sidebar space-above-sm">
+      <Icon icon="leftPanelOpen" />
+      <p>View All Exercises</p>
+    </a>
+  </div>
+
+  <hr class="space-above-base" />
+
+  <div class="mobile-sidebar__links flex-col lay-gap-xsm">
+    {#each toolsData as item}
+      <a href={item.href} class="link link--sidebar">
+        <Icon icon={item.icon} />
+        <p>{item.name}</p>
+      </a>
+    {/each}
+    <a href="/tools" class="link link--sidebar space-above-sm">
+      <Icon icon="leftPanelOpen" />
+      <p>View All Tools</p>
     </a>
   </div>
 </aside>
@@ -111,6 +127,7 @@
     background-color: var(--color-bg-surface-1);
     border-bottom: 1px solid var(--color-border-subtle);
     box-shadow: var(--shadow-1);
+    overflow-x: auto;
   }
 
   .desktop-header__links::before {
@@ -140,6 +157,8 @@
     min-height: 48px;
     padding: 0 var(--space-12);
     border-radius: var(--radius-base);
+
+    -webkit-tap-highlight-color: transparent;
 
     transition: var(--transition-color);
   }
@@ -187,8 +206,12 @@
     justify-content: space-between;
   }
 
+  .mobile-sidebar__top > a:first-child {
+    width: 100%;
+  }
+
   .mobile-sidebar__links {
-    margin-top: var(--space-24);
+    margin-top: var(--space-16);
   }
 
   .link--sidebar {

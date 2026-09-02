@@ -23,8 +23,8 @@
   <main>
     <HeroCard />
 
-    <section class="space-above-lg">
-      <h3>Last Used</h3>
+    <section class="content">
+      <p class="text-heading-3">Last Used</p>
 
       <div class="last-used flex-row space-above-base">
         {#each lastUsedItems as item}
@@ -39,10 +39,10 @@
       </div>
     </section>
 
-    <hr class="space-above-xlg" />
+    <hr />
 
-    <section class="space-above-lg">
-      <h3>Exercises</h3>
+    <section class="content">
+      <p class="text-heading-3">Exercises</p>
 
       <div class="lay-grid-cards space-above-base">
         {#each exercisesData as item}
@@ -57,8 +57,10 @@
       </div>
     </section>
 
-    <section class="space-above-lg">
-      <h3>Tools</h3>
+    <hr />
+
+    <section class="content">
+      <p class="text-heading-3">Tools</p>
 
       <div class="lay-grid-cards space-above-base">
         {#each toolsData as item}
@@ -78,13 +80,24 @@
 <style>
   main {
     width: 100%;
-    padding: var(--app-padding);
+  }
+
+  .content {
+    padding: var(--space-36) var(--space-12);
   }
 
   .last-used {
     align-items: stretch;
     padding-bottom: var(--space-8);
+    padding-right: var(--space-36);
     overflow-x: auto;
+
+    mask-image: linear-gradient(
+      to right,
+      black 0%,
+      black 96%,
+      transparent 100%
+    );
   }
 
   .lay-grid-cards {

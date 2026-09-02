@@ -227,7 +227,7 @@
   .timeline-sidebar-wrapper {
     position: fixed;
     inset: 0 0 0 auto;
-    z-index: 3;
+    z-index: 99;
   }
   .hide {
     display: none;

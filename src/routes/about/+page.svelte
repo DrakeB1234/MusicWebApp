@@ -22,22 +22,22 @@
           width="96"
           height="96"
         />
-        <h2 class="text-heading-2">Tone Tools</h2>
+        <h2 class="text-heading-2 space-above-base">Tone Tools</h2>
       </div>
-      <p class="text-body text-max-width-lg text-body-subtle space-above-base">
+      <p class="text-body text-max-width-lg text-body-subtle space-above-sm">
         Tone Tools is a open source project aiming to provide useful music
         theory tools and exercises. If you like this project, be sure to leave a
         star on my github repo for this project!
       </p>
       <p class="text-body text-max-width-lg text-body-subtle space-above-base">
-        Im always open to suggestions and recommended to use the github repo
-        below to let me know what you have to say!
+        I'm always open to suggestions; which can be expressed to me using the
+        github repo linked below! I'd be happy to hear what you have to say!
       </p>
       <Button
         element="a"
         href="https://github.com/DrakeB1234/ToneTools"
         variant="outlined"
-        class="space-above-base"
+        class="space-above-xlg"
         target="_blank"
         rel="noreferrer"
         aria-label="View Tone Tools source code on GitHub"
@@ -50,6 +50,10 @@
 
       <div class="about__content">
         <h2 class="text-heading-2">Powered by</h2>
+        <p class="text-body-subtle space-above-sm">
+          Listed are some resources that I used to help build and make this
+          project possible!
+        </p>
 
         <h3 class="text-heading-3 space-above-base">Libraries & Frameworks</h3>
         <ul class="about-list">

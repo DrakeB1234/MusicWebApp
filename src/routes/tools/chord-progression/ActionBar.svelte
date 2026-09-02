@@ -1,6 +1,6 @@
 <script lang="ts">
   import Icon from "$lib/components/Icons/Icon.svelte";
-  import PianoMiniRoll from "$lib/components/Piano/PianoMiniRoll.svelte";
+  import PianoRoll from "$lib/components/Piano/PianoRoll.svelte";
   import Button from "$lib/components/UI/Button.svelte";
   import Input from "$lib/components/UI/Input.svelte";
   import Label from "$lib/components/UI/Label.svelte";
@@ -297,9 +297,17 @@
 </section>
 
 <div class="piano-roll-wrapper" class:hide={!isPianoRollOpen}>
-  <hr />
   <section class="piano-roll">
-    <PianoMiniRoll activeNotes={playerRef.currentPlayedNotes} />
+    <PianoRoll
+      activeNotes={playerRef.currentPlayedNotes}
+      range={{
+        startNote: "C1",
+        endNote: "C7",
+      }}
+      labelMode="root"
+      keyHeight={{ black: 44, white: 80 }}
+      fit
+    />
   </section>
 </div>
 
@@ -316,16 +324,13 @@
   .popover__bottom-buttons-container {
     justify-content: end;
   }
-  .piano-roll-wrapper hr {
-    width: calc(100% - var(--space-36));
-    max-width: 1400px;
-    padding-inline: var(--space-8);
-    margin: auto;
+  .piano-roll :global(.piano-svg) {
+    min-height: 40px;
+    max-width: unset;
   }
   .piano-roll {
-    padding-top: var(--space-12);
-    max-width: 1200px;
-    margin: auto;
+    border-top: 1px solid var(--color-border);
+    overflow-x: auto;
   }
   .hide {
     display: none;

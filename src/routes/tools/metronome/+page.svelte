@@ -119,7 +119,7 @@
 
       <div class="bpm-slider-container flex-row space-above-lg">
         <Button
-          variant="outlined"
+          variant="text"
           size="icon-small"
           ariaLabel="Decrease Bpm Value by 1"
           onclick={() => handleBpmButtonPress(-1)}><Icon icon="minus" /></Button
@@ -133,11 +133,17 @@
           class="bpm-slider"
         />
         <Button
-          variant="outlined"
+          variant="text"
           size="icon-small"
           ariaLabel="Increase Bpm Value by 1"
           onclick={() => handleBpmButtonPress(1)}><Icon icon="plus" /></Button
         >
+      </div>
+
+      <div class="beat-container flex-row space-above-base">
+        {#each { length: inputBeatCount } as _, i}
+          <span class="beat" class:active={currentBeatCount === i + 1}></span>
+        {/each}
       </div>
 
       <div class="play-input-container flex-row lay-gap-base space-above-lg">
@@ -228,5 +234,29 @@
   .flex-col__input-label {
     width: 100%;
     max-width: 300px;
+  }
+
+  .beat-container {
+    flex-wrap: wrap;
+    gap: var(--space-16);
+    justify-content: center;
+  }
+
+  .beat {
+    flex-shrink: 0;
+    height: 14px;
+    width: 14px;
+    border-radius: var(--radius-full);
+    border: 2px solid var(--color-border);
+  }
+
+  .beat:first-child {
+    height: 20px;
+    width: 20px;
+  }
+
+  .beat.active {
+    background-color: var(--color-bg-primary);
+    border-color: transparent;
   }
 </style>

@@ -1,8 +1,9 @@
 <script lang="ts">
   import { page } from "$app/state";
   import { pianoAudioService } from "$lib/audio/pianoAudioService.svelte";
+  import Icon from "$lib/components/Icons/Icon.svelte";
   import PageHeaderContainer from "$lib/components/PageHeaderContainer.svelte";
-  import PianoInteractive from "$lib/components/Piano/PianoInteractive.svelte";
+  import PianoRoll from "$lib/components/Piano/PianoRoll.svelte";
   import Button from "$lib/components/UI/Button.svelte";
   import Wrapper from "$lib/components/Wrapper.svelte";
   import { lastUsedService } from "$lib/data/lastUsedService.svelte";
@@ -34,6 +35,10 @@
     }
   }
 
+  function handleResetNotesPressed() {
+    selectedNotes = [];
+  }
+
   onMount(() => {
     // Save url for last used data
     lastUsedService.addLastUsed(page.url.pathname);
@@ -53,17 +58,29 @@
     <PageHeaderContainer headerText="Indentify Chord" fallbackHref="/" />
 
     <section class="card">
-      <PianoInteractive
+      <PianoRoll
         activeNotes={selectedNotes}
         range={{
           startNote: "C4",
           endNote: "E7",
         }}
+        overflowScroll
+        interactive
         onNoteClick={handlePianoNoteClick}
       />
 
       <div class="card-content space-above-base">
-        <p>Selected Notes:</p>
+        <div class="flex-row">
+          <p>Selected Notes:</p>
+          <Button
+            variant="text"
+            size="icon-small"
+            title="reset all notes"
+            onclick={handleResetNotesPressed}
+          >
+            <Icon icon="refresh" />
+          </Button>
+        </div>
         <div class="notes-container flex-row space-above-sm">
           {#each selectedNotes as note}
             <p class="text-separated">{note}</p>
@@ -113,6 +130,7 @@
   .card {
     padding: 0;
     padding-bottom: var(--space-8);
+    overflow: hidden;
   }
 
   .card-content {

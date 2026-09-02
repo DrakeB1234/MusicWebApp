@@ -1,15 +1,15 @@
 <script lang="ts">
   import Button from "$lib/components/UI/Button.svelte";
   import Wrapper from "$lib/components/Wrapper.svelte";
-  import { onDestroy, onMount } from "svelte";
+  import { onDestroy } from "svelte";
   import { pianoAudioService } from "$lib/audio/pianoAudioService.svelte";
   import type { PageProps } from "./$types";
-  import PianoSnapshot from "$lib/components/Piano/PianoSnapshot.svelte";
   import Icon from "$lib/components/Icons/Icon.svelte";
   import PageHeaderContainer from "$lib/components/PageHeaderContainer.svelte";
   import Label from "$lib/components/UI/Label.svelte";
   import Toggle from "$lib/components/UI/Toggle.svelte";
   import { simplifyNoteName } from "$lib/helpers/musicTheory";
+  import PianoRoll from "$lib/components/Piano/PianoRoll.svelte";
 
   // Values
 
@@ -109,7 +109,7 @@
 
       <hr class="space-above-base" />
 
-      <div class="scale-notes-container flex-row">
+      <div class="scale-notes-container flex-row space-above-base">
         {#each data.scaleNotes as note, index (note)}
           {@const rawNote = note.letter + (note.accidental ?? "")}
           {@const displayNote = isSimplifyNotesSelected
@@ -126,16 +126,15 @@
       </div>
 
       <div class="piano-roll-container">
-        <PianoSnapshot
+        <PianoRoll
           activeNotes={data.pianoRollNotes}
           range={{
             startNote: "C4",
-            endNote: "B5",
+            endNote: "C7",
           }}
+          overflowScroll
         />
       </div>
-
-      <hr class="divider" />
 
       <div class="card-high">
         <h3 class="text-heading-3">Numerals</h3>
@@ -223,19 +222,15 @@
 
   .scale-notes-container {
     flex-wrap: wrap;
-
-    padding-block: var(--space-16);
-    padding-bottom: var(--space-24);
   }
 
   .piano-roll-container {
-    width: 100%;
-    padding-bottom: var(--space-4);
-
+    /* Full Bleed, Negative margin */
     margin-left: calc(-1 * var(--space-16));
     margin-right: calc(-1 * var(--space-16));
 
-    overflow-x: auto;
+    margin-block: var(--space-24);
+    border-bottom: 3px solid var(--color-border);
   }
 
   .divider {

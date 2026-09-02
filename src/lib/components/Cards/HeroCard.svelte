@@ -16,7 +16,7 @@
       progression in!
     </p>
 
-    <div class="space-above-lg">
+    <div class="space-above-base">
       <Button element="a" class="hero-button" href="/tools/chord-progression">
         Open Tool
         <Icon icon="arrowRightAlt" />
@@ -29,11 +29,14 @@
   .card {
     position: relative;
     padding: var(--space-24) var(--space-24);
-    padding-bottom: var(--space-16);
 
-    box-shadow: var(--shadow-2);
-    background-color: var(--color-bg-primary);
-    overflow: hidden;
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    border: none;
+    background: linear-gradient(
+      90deg,
+      rgba(38, 115, 238, 1) 47%,
+      rgb(82, 171, 222) 100%
+    );
   }
   .content {
     position: relative;
@@ -43,18 +46,5 @@
   .content h1,
   .content p {
     color: var(--color-on-bg-primary);
-  }
-  .card::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: 12%;
-    background-color: rgba(255, 255, 255, 0.2);
-    z-index: 0;
-  }
-  .card :global(.hero-button) {
-    border-color: var(--color-on-bg-primary);
   }
 </style>

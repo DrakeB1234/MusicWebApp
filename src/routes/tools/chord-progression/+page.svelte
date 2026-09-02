@@ -85,8 +85,9 @@
 
 <style>
   .action-bar-wrapper {
-    background-color: var(--color-bg-page);
-    border-bottom: 1px solid var(--color-border);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-base);
+    overflow: hidden;
   }
   .content-wrapper {
     max-width: 1400px;
